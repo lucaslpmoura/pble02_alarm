@@ -1,0 +1,190 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"54 ./io.h
+[; ;./io.h: 54: void digitalWrite(int pin, int value);
+[v _digitalWrite `(v ~T0 @X0 0 ef2`i`i ]
+"7 led.c
+[; ;led.c: 7:     digitalWrite(PIN_C1, 0);
+[c E2 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 .. ]
+[n E2 pin_label PIN_A0 PIN_A1 PIN_A2 PIN_A3 PIN_A4 PIN_A5 PIN_A6 PIN_A7 PIN_B0 PIN_B1 PIN_B2 PIN_B3 PIN_B4 PIN_B5 PIN_B6 PIN_B7 PIN_C0 PIN_C1 PIN_C2 PIN_C3 PIN_C4 PIN_C5 PIN_C6 PIN_C7 PIN_D0 PIN_D1 PIN_D2 PIN_D3 PIN_D4 PIN_D5 PIN_D6 PIN_D7 PIN_E0 PIN_E1 PIN_E2 PIN_E3 PIN_E4 PIN_E5 PIN_E6 PIN_E7  ]
+"55 ./io.h
+[; ;./io.h: 55: int digitalRead(int pin);
+[v _digitalRead `(i ~T0 @X0 0 ef1`i ]
+"5 led.c
+[; ;led.c: 5: void ledInit() {
+[v _ledInit `(v ~T0 @X0 1 ef ]
+{
+[e :U _ledInit ]
+[f ]
+"6
+[; ;led.c: 6:     (*(volatile __near unsigned char*)0xF94) = 0x00;
+[e = *U -> -> 3988 `i `*VNuc -> -> 0 `i `uc ]
+"7
+[; ;led.c: 7:     digitalWrite(PIN_C1, 0);
+[e ( _digitalWrite (2 , . `E2 17 -> 0 `i ]
+"8
+[; ;led.c: 8:     digitalWrite(PIN_C2, 0);
+[e ( _digitalWrite (2 , . `E2 18 -> 0 `i ]
+"9
+[; ;led.c: 9: }
+[e :UE 1 ]
+}
+"11
+[; ;led.c: 11: void ledOn(int pos) {
+[v _ledOn `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _ledOn ]
+[v _pos `i ~T0 @X0 1 r1 ]
+[f ]
+"12
+[; ;led.c: 12:     switch (pos) {
+[e $U 4  ]
+{
+"13
+[; ;led.c: 13:         case 1:
+[e :U 5 ]
+"14
+[; ;led.c: 14:             digitalWrite(PIN_C1, 1);
+[e ( _digitalWrite (2 , . `E2 17 -> 1 `i ]
+"15
+[; ;led.c: 15:             break;
+[e $U 3  ]
+"16
+[; ;led.c: 16:         case 2:
+[e :U 6 ]
+"17
+[; ;led.c: 17:             digitalWrite(PIN_C2, 1);
+[e ( _digitalWrite (2 , . `E2 18 -> 1 `i ]
+"18
+[; ;led.c: 18:             break;
+[e $U 3  ]
+"19
+[; ;led.c: 19:     }
+}
+[e $U 3  ]
+[e :U 4 ]
+[e [\ _pos , $ -> 1 `i 5
+ , $ -> 2 `i 6
+ 3 ]
+[e :U 3 ]
+"21
+[; ;led.c: 21: }
+[e :UE 2 ]
+}
+"23
+[; ;led.c: 23: void ledOff(int pos) {
+[v _ledOff `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _ledOff ]
+[v _pos `i ~T0 @X0 1 r1 ]
+[f ]
+"24
+[; ;led.c: 24:     switch (pos) {
+[e $U 9  ]
+{
+"25
+[; ;led.c: 25:         case 1:
+[e :U 10 ]
+"26
+[; ;led.c: 26:             digitalWrite(PIN_C1, 0);
+[e ( _digitalWrite (2 , . `E2 17 -> 0 `i ]
+"27
+[; ;led.c: 27:             break;
+[e $U 8  ]
+"28
+[; ;led.c: 28:         case 2:
+[e :U 11 ]
+"29
+[; ;led.c: 29:             digitalWrite(PIN_C2, 0);
+[e ( _digitalWrite (2 , . `E2 18 -> 0 `i ]
+"30
+[; ;led.c: 30:             break;
+[e $U 8  ]
+"31
+[; ;led.c: 31:     }
+}
+[e $U 8  ]
+[e :U 9 ]
+[e [\ _pos , $ -> 1 `i 10
+ , $ -> 2 `i 11
+ 8 ]
+[e :U 8 ]
+"32
+[; ;led.c: 32: }
+[e :UE 7 ]
+}
+"34
+[; ;led.c: 34: void ledBlink(int pos) {
+[v _ledBlink `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _ledBlink ]
+[v _pos `i ~T0 @X0 1 r1 ]
+[f ]
+"35
+[; ;led.c: 35:     switch (pos) {
+[e $U 14  ]
+{
+"36
+[; ;led.c: 36:         case 1:
+[e :U 15 ]
+"37
+[; ;led.c: 37:             if (digitalRead(PIN_C1)) {
+[e $ ! != ( _digitalRead (1 . `E2 17 -> 0 `i 16  ]
+{
+"38
+[; ;led.c: 38:                 digitalWrite(PIN_C1, 0);
+[e ( _digitalWrite (2 , . `E2 17 -> 0 `i ]
+"39
+[; ;led.c: 39:             } else {
+}
+[e $U 17  ]
+[e :U 16 ]
+{
+"40
+[; ;led.c: 40:                 digitalWrite(PIN_C1, 1);
+[e ( _digitalWrite (2 , . `E2 17 -> 1 `i ]
+"41
+[; ;led.c: 41:             }
+}
+[e :U 17 ]
+"42
+[; ;led.c: 42:             break;
+[e $U 13  ]
+"43
+[; ;led.c: 43:         case 2:
+[e :U 18 ]
+"44
+[; ;led.c: 44:             if (digitalRead(PIN_C2)) {
+[e $ ! != ( _digitalRead (1 . `E2 18 -> 0 `i 19  ]
+{
+"45
+[; ;led.c: 45:                 digitalWrite(PIN_C2, 0);
+[e ( _digitalWrite (2 , . `E2 18 -> 0 `i ]
+"46
+[; ;led.c: 46:             } else {
+}
+[e $U 20  ]
+[e :U 19 ]
+{
+"47
+[; ;led.c: 47:                 digitalWrite(PIN_C2, 1);
+[e ( _digitalWrite (2 , . `E2 18 -> 1 `i ]
+"48
+[; ;led.c: 48:             }
+}
+[e :U 20 ]
+"49
+[; ;led.c: 49:             break;
+[e $U 13  ]
+"50
+[; ;led.c: 50:     }
+}
+[e $U 13  ]
+[e :U 14 ]
+[e [\ _pos , $ -> 1 `i 15
+ , $ -> 2 `i 18
+ 13 ]
+[e :U 13 ]
+"52
+[; ;led.c: 52: }
+[e :UE 12 ]
+}

@@ -1,0 +1,6 @@
+(sym_lib_table
+  (lib (name "Chave_1825910-6")(type "Legacy")(uri "${KIPRJMOD}/Bibliotecas/Símbolos/Chave_1825910-6.lib")(options "")(descr ""))
+  (lib (name "PJ-002A")(type "Legacy")(uri "${KIPRJMOD}/Bibliotecas/Símbolos/PJ-002A.lib")(options "")(descr ""))
+  (lib (name "SamacSys_Parts")(type "Legacy")(uri "${KIPRJMOD}/Bibliotecas/Símbolos/SamacSys_Parts.lib")(options "")(descr ""))
+  (lib (name "PBLE01-rescue")(type "Legacy")(uri "${KIPRJMOD}/PBLE01-rescue.lib")(options "")(descr ""))
+)

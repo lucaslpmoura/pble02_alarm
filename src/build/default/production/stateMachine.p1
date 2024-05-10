@@ -1,0 +1,468 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"25 ./var.h
+[; ;./var.h: 25: void setState(char newState);
+[v _setState `(v ~T0 @X0 0 ef1`uc ]
+"9 stateMachine.c
+[; ;stateMachine.c: 9:     setState(STATE_HOME);
+[c E24 0 1 2 3 4 5 6 7 8 .. ]
+[n E24 . STATE_HOME STATE_IDIOMA STATE_ALARME_1 STATE_ALARME_2 STATE_ALARME_1_ALTO STATE_ALARME_1_BAIXO STATE_ALARME_2_ALTO STATE_ALARME_2_BAIXO STATE_FIM  ]
+"20 ./event.h
+[; ;./event.h: 20: unsigned int eventRead(void);
+[v _eventRead `(ui ~T0 @X0 0 ef ]
+"20 stateMachine.c
+[; ;stateMachine.c: 20:             if (evento == EV_RIGHT) {
+[c E36 0 1 2 3 4 5 .. ]
+[n E36 . EV_UP EV_DOWN EV_LEFT EV_RIGHT EV_ENTER EV_NOEVENT  ]
+"34 ./var.h
+[; ;./var.h: 34: void setLanguage(int newLanguage);
+[v _setLanguage `(v ~T0 @X0 0 ef1`i ]
+"33
+[; ;./var.h: 33: int getLanguage(void);
+[v _getLanguage `(i ~T0 @X0 0 ef ]
+"30
+[; ;./var.h: 30: void setAlarmLevel(int alarm, int level, int newAlarmLevel);
+[v _setAlarmLevel `(v ~T0 @X0 0 ef3`i`i`i ]
+"29
+[; ;./var.h: 29: int getAlarmLevel(int alarm, int level);
+[v _getAlarmLevel `(i ~T0 @X0 0 ef2`i`i ]
+"24
+[; ;./var.h: 24: char getState(void);
+[v _getState `(uc ~T0 @X0 0 ef ]
+"27
+[; ;./var.h: 27: void setTimer(int);
+[v _setTimer `(v ~T0 @X0 0 ef1`i ]
+"26
+[; ;./var.h: 26: int getTimer(void);
+[v _getTimer `(i ~T0 @X0 0 ef ]
+"11 ./output.h
+[; ;./output.h: 11: void outputPrint(int numTela, int idioma);
+[v _outputPrint `(v ~T0 @X0 0 ef2`i`i ]
+"8 stateMachine.c
+[; ;stateMachine.c: 8: void smInit(void) {
+[v _smInit `(v ~T0 @X0 1 ef ]
+{
+[e :U _smInit ]
+[f ]
+"9
+[; ;stateMachine.c: 9:     setState(STATE_HOME);
+[e ( _setState (1 -> . `E24 0 `uc ]
+"10
+[; ;stateMachine.c: 10: }
+[e :UE 1 ]
+}
+"12
+[; ;stateMachine.c: 12: void smLoop(void) {
+[v _smLoop `(v ~T0 @X0 1 ef ]
+{
+[e :U _smLoop ]
+[f ]
+"13
+[; ;stateMachine.c: 13:     unsigned char evento;
+[v _evento `uc ~T0 @X0 1 a ]
+"16
+[; ;stateMachine.c: 16:     evento = eventRead();
+[e = _evento -> ( _eventRead ..  `uc ]
+"18
+[; ;stateMachine.c: 18:     switch (getState()) {
+[e $U 4  ]
+{
+"19
+[; ;stateMachine.c: 19:         case STATE_HOME:
+[e :U 5 ]
+"20
+[; ;stateMachine.c: 20:             if (evento == EV_RIGHT) {
+[e $ ! == -> _evento `i -> . `E36 3 `i 6  ]
+{
+"21
+[; ;stateMachine.c: 21:                 setState(STATE_IDIOMA);
+[e ( _setState (1 -> . `E24 1 `uc ]
+"22
+[; ;stateMachine.c: 22:             }
+}
+[e :U 6 ]
+"23
+[; ;stateMachine.c: 23:             if (evento == EV_LEFT) {
+[e $ ! == -> _evento `i -> . `E36 2 `i 7  ]
+{
+"24
+[; ;stateMachine.c: 24:                 setState(STATE_ALARME_2);
+[e ( _setState (1 -> . `E24 3 `uc ]
+"25
+[; ;stateMachine.c: 25:             }
+}
+[e :U 7 ]
+"26
+[; ;stateMachine.c: 26:             break;
+[e $U 3  ]
+"27
+[; ;stateMachine.c: 27:         case STATE_IDIOMA:
+[e :U 8 ]
+"30
+[; ;stateMachine.c: 30:             if (evento == EV_ENTER) {
+[e $ ! == -> _evento `i -> . `E36 4 `i 9  ]
+{
+"31
+[; ;stateMachine.c: 31:                 setLanguage(getLanguage() + 1);
+[e ( _setLanguage (1 + ( _getLanguage ..  -> 1 `i ]
+"32
+[; ;stateMachine.c: 32:             }
+}
+[e :U 9 ]
+"34
+[; ;stateMachine.c: 34:             if (evento == EV_RIGHT) {
+[e $ ! == -> _evento `i -> . `E36 3 `i 10  ]
+{
+"35
+[; ;stateMachine.c: 35:                 setState(STATE_ALARME_1);
+[e ( _setState (1 -> . `E24 2 `uc ]
+"36
+[; ;stateMachine.c: 36:             }
+}
+[e :U 10 ]
+"37
+[; ;stateMachine.c: 37:             if (evento == EV_LEFT) {
+[e $ ! == -> _evento `i -> . `E36 2 `i 11  ]
+{
+"38
+[; ;stateMachine.c: 38:                 setState(STATE_HOME);
+[e ( _setState (1 -> . `E24 0 `uc ]
+"39
+[; ;stateMachine.c: 39:             }
+}
+[e :U 11 ]
+"41
+[; ;stateMachine.c: 41:             break;
+[e $U 3  ]
+"42
+[; ;stateMachine.c: 42:         case STATE_ALARME_1:
+[e :U 12 ]
+"44
+[; ;stateMachine.c: 44:             if (evento == EV_RIGHT) {
+[e $ ! == -> _evento `i -> . `E36 3 `i 13  ]
+{
+"45
+[; ;stateMachine.c: 45:                 setState(STATE_ALARME_2);
+[e ( _setState (1 -> . `E24 3 `uc ]
+"46
+[; ;stateMachine.c: 46:             }
+}
+[e :U 13 ]
+"47
+[; ;stateMachine.c: 47:             if (evento == EV_LEFT) {
+[e $ ! == -> _evento `i -> . `E36 2 `i 14  ]
+{
+"48
+[; ;stateMachine.c: 48:                 setState(STATE_IDIOMA);
+[e ( _setState (1 -> . `E24 1 `uc ]
+"49
+[; ;stateMachine.c: 49:             }
+}
+[e :U 14 ]
+"52
+[; ;stateMachine.c: 52:             if (evento == EV_ENTER) {
+[e $ ! == -> _evento `i -> . `E36 4 `i 15  ]
+{
+"53
+[; ;stateMachine.c: 53:                 setState(STATE_ALARME_1_ALTO);
+[e ( _setState (1 -> . `E24 4 `uc ]
+"54
+[; ;stateMachine.c: 54:             }
+}
+[e :U 15 ]
+"55
+[; ;stateMachine.c: 55:             break;
+[e $U 3  ]
+"56
+[; ;stateMachine.c: 56:         case STATE_ALARME_2:
+[e :U 16 ]
+"58
+[; ;stateMachine.c: 58:             if (evento == EV_RIGHT) {
+[e $ ! == -> _evento `i -> . `E36 3 `i 17  ]
+{
+"59
+[; ;stateMachine.c: 59:                 setState(STATE_HOME);
+[e ( _setState (1 -> . `E24 0 `uc ]
+"60
+[; ;stateMachine.c: 60:             }
+}
+[e :U 17 ]
+"61
+[; ;stateMachine.c: 61:             if (evento == EV_LEFT) {
+[e $ ! == -> _evento `i -> . `E36 2 `i 18  ]
+{
+"62
+[; ;stateMachine.c: 62:                 setState(STATE_ALARME_1);
+[e ( _setState (1 -> . `E24 2 `uc ]
+"63
+[; ;stateMachine.c: 63:             }
+}
+[e :U 18 ]
+"66
+[; ;stateMachine.c: 66:             if (evento == EV_ENTER) {
+[e $ ! == -> _evento `i -> . `E36 4 `i 19  ]
+{
+"67
+[; ;stateMachine.c: 67:                 setState(STATE_ALARME_2_ALTO);
+[e ( _setState (1 -> . `E24 6 `uc ]
+"68
+[; ;stateMachine.c: 68:             }
+}
+[e :U 19 ]
+"69
+[; ;stateMachine.c: 69:             break;
+[e $U 3  ]
+"70
+[; ;stateMachine.c: 70:         case STATE_ALARME_1_ALTO:
+[e :U 20 ]
+"72
+[; ;stateMachine.c: 72:             if (evento == EV_RIGHT || evento == EV_LEFT) {
+[e $ ! || == -> _evento `i -> . `E36 3 `i == -> _evento `i -> . `E36 2 `i 21  ]
+{
+"73
+[; ;stateMachine.c: 73:                 setState(STATE_ALARME_1_BAIXO);
+[e ( _setState (1 -> . `E24 5 `uc ]
+"74
+[; ;stateMachine.c: 74:             }
+}
+[e :U 21 ]
+"75
+[; ;stateMachine.c: 75:             if (evento == EV_UP) {
+[e $ ! == -> _evento `i -> . `E36 0 `i 22  ]
+{
+"76
+[; ;stateMachine.c: 76:                 setAlarmLevel(0, 0, getAlarmLevel(0, 0) + 1);
+[e ( _setAlarmLevel (3 , , -> 0 `i -> 0 `i + ( _getAlarmLevel (2 , -> 0 `i -> 0 `i -> 1 `i ]
+"77
+[; ;stateMachine.c: 77:             }
+}
+[e :U 22 ]
+"78
+[; ;stateMachine.c: 78:             if (evento == EV_DOWN) {
+[e $ ! == -> _evento `i -> . `E36 1 `i 23  ]
+{
+"79
+[; ;stateMachine.c: 79:                 setAlarmLevel(0, 0, getAlarmLevel(0, 0) - 1);
+[e ( _setAlarmLevel (3 , , -> 0 `i -> 0 `i - ( _getAlarmLevel (2 , -> 0 `i -> 0 `i -> 1 `i ]
+"80
+[; ;stateMachine.c: 80:             }
+}
+[e :U 23 ]
+"82
+[; ;stateMachine.c: 82:             if (evento == EV_ENTER) {
+[e $ ! == -> _evento `i -> . `E36 4 `i 24  ]
+{
+"83
+[; ;stateMachine.c: 83:                 setState(STATE_ALARME_1);
+[e ( _setState (1 -> . `E24 2 `uc ]
+"84
+[; ;stateMachine.c: 84:             }
+}
+[e :U 24 ]
+"85
+[; ;stateMachine.c: 85:             break;
+[e $U 3  ]
+"86
+[; ;stateMachine.c: 86:         case STATE_ALARME_1_BAIXO:
+[e :U 25 ]
+"88
+[; ;stateMachine.c: 88:             if (evento == EV_RIGHT || evento == EV_LEFT) {
+[e $ ! || == -> _evento `i -> . `E36 3 `i == -> _evento `i -> . `E36 2 `i 26  ]
+{
+"89
+[; ;stateMachine.c: 89:                 setState(STATE_ALARME_1_ALTO);
+[e ( _setState (1 -> . `E24 4 `uc ]
+"90
+[; ;stateMachine.c: 90:             }
+}
+[e :U 26 ]
+"92
+[; ;stateMachine.c: 92:             if (evento == EV_UP) {
+[e $ ! == -> _evento `i -> . `E36 0 `i 27  ]
+{
+"93
+[; ;stateMachine.c: 93:                 setAlarmLevel(0, 1, getAlarmLevel(0, 1) + 1);
+[e ( _setAlarmLevel (3 , , -> 0 `i -> 1 `i + ( _getAlarmLevel (2 , -> 0 `i -> 1 `i -> 1 `i ]
+"94
+[; ;stateMachine.c: 94:             }
+}
+[e :U 27 ]
+"95
+[; ;stateMachine.c: 95:             if (evento == EV_DOWN) {
+[e $ ! == -> _evento `i -> . `E36 1 `i 28  ]
+{
+"96
+[; ;stateMachine.c: 96:                 setAlarmLevel(0, 1, getAlarmLevel(0, 1) - 1);
+[e ( _setAlarmLevel (3 , , -> 0 `i -> 1 `i - ( _getAlarmLevel (2 , -> 0 `i -> 1 `i -> 1 `i ]
+"97
+[; ;stateMachine.c: 97:             }
+}
+[e :U 28 ]
+"99
+[; ;stateMachine.c: 99:             if (evento == EV_ENTER) {
+[e $ ! == -> _evento `i -> . `E36 4 `i 29  ]
+{
+"100
+[; ;stateMachine.c: 100:                 setState(STATE_ALARME_1);
+[e ( _setState (1 -> . `E24 2 `uc ]
+"101
+[; ;stateMachine.c: 101:             }
+}
+[e :U 29 ]
+"102
+[; ;stateMachine.c: 102:             break;
+[e $U 3  ]
+"103
+[; ;stateMachine.c: 103:         case STATE_ALARME_2_ALTO:
+[e :U 30 ]
+"105
+[; ;stateMachine.c: 105:             if (evento == EV_RIGHT || evento == EV_LEFT) {
+[e $ ! || == -> _evento `i -> . `E36 3 `i == -> _evento `i -> . `E36 2 `i 31  ]
+{
+"106
+[; ;stateMachine.c: 106:                 setState(STATE_ALARME_2_BAIXO);
+[e ( _setState (1 -> . `E24 7 `uc ]
+"107
+[; ;stateMachine.c: 107:             }
+}
+[e :U 31 ]
+"108
+[; ;stateMachine.c: 108:             if (evento == EV_UP) {
+[e $ ! == -> _evento `i -> . `E36 0 `i 32  ]
+{
+"109
+[; ;stateMachine.c: 109:                 setAlarmLevel(1, 0, getAlarmLevel(1, 0) + 1);
+[e ( _setAlarmLevel (3 , , -> 1 `i -> 0 `i + ( _getAlarmLevel (2 , -> 1 `i -> 0 `i -> 1 `i ]
+"110
+[; ;stateMachine.c: 110:             }
+}
+[e :U 32 ]
+"111
+[; ;stateMachine.c: 111:             if (evento == EV_DOWN) {
+[e $ ! == -> _evento `i -> . `E36 1 `i 33  ]
+{
+"112
+[; ;stateMachine.c: 112:                 setAlarmLevel(1, 0, getAlarmLevel(1, 0) - 1);
+[e ( _setAlarmLevel (3 , , -> 1 `i -> 0 `i - ( _getAlarmLevel (2 , -> 1 `i -> 0 `i -> 1 `i ]
+"113
+[; ;stateMachine.c: 113:             }
+}
+[e :U 33 ]
+"115
+[; ;stateMachine.c: 115:             if (evento == EV_ENTER) {
+[e $ ! == -> _evento `i -> . `E36 4 `i 34  ]
+{
+"116
+[; ;stateMachine.c: 116:                 setState(STATE_ALARME_2);
+[e ( _setState (1 -> . `E24 3 `uc ]
+"117
+[; ;stateMachine.c: 117:             }
+}
+[e :U 34 ]
+"118
+[; ;stateMachine.c: 118:             break;
+[e $U 3  ]
+"119
+[; ;stateMachine.c: 119:         case STATE_ALARME_2_BAIXO:
+[e :U 35 ]
+"121
+[; ;stateMachine.c: 121:             if (evento == EV_RIGHT || evento == EV_LEFT) {
+[e $ ! || == -> _evento `i -> . `E36 3 `i == -> _evento `i -> . `E36 2 `i 36  ]
+{
+"122
+[; ;stateMachine.c: 122:                 setState(STATE_ALARME_2_ALTO);
+[e ( _setState (1 -> . `E24 6 `uc ]
+"123
+[; ;stateMachine.c: 123:             }
+}
+[e :U 36 ]
+"125
+[; ;stateMachine.c: 125:             if (evento == EV_UP) {
+[e $ ! == -> _evento `i -> . `E36 0 `i 37  ]
+{
+"126
+[; ;stateMachine.c: 126:                 setAlarmLevel(1, 1, getAlarmLevel(1, 1) + 1);
+[e ( _setAlarmLevel (3 , , -> 1 `i -> 1 `i + ( _getAlarmLevel (2 , -> 1 `i -> 1 `i -> 1 `i ]
+"127
+[; ;stateMachine.c: 127:             }
+}
+[e :U 37 ]
+"128
+[; ;stateMachine.c: 128:             if (evento == EV_DOWN) {
+[e $ ! == -> _evento `i -> . `E36 1 `i 38  ]
+{
+"129
+[; ;stateMachine.c: 129:                 setAlarmLevel(1, 1, getAlarmLevel(1, 1) - 1);
+[e ( _setAlarmLevel (3 , , -> 1 `i -> 1 `i - ( _getAlarmLevel (2 , -> 1 `i -> 1 `i -> 1 `i ]
+"130
+[; ;stateMachine.c: 130:             }
+}
+[e :U 38 ]
+"132
+[; ;stateMachine.c: 132:             if (evento == EV_ENTER) {
+[e $ ! == -> _evento `i -> . `E36 4 `i 39  ]
+{
+"133
+[; ;stateMachine.c: 133:                 setState(STATE_ALARME_2);
+[e ( _setState (1 -> . `E24 3 `uc ]
+"134
+[; ;stateMachine.c: 134:             }
+}
+[e :U 39 ]
+"135
+[; ;stateMachine.c: 135:             break;
+[e $U 3  ]
+"138
+[; ;stateMachine.c: 138:     }
+}
+[e $U 3  ]
+[e :U 4 ]
+[e [\ -> ( _getState ..  `i , $ . `E24 0 5
+ , $ . `E24 1 8
+ , $ . `E24 2 12
+ , $ . `E24 3 16
+ , $ . `E24 4 20
+ , $ . `E24 5 25
+ , $ . `E24 6 30
+ , $ . `E24 7 35
+ 3 ]
+[e :U 3 ]
+"140
+[; ;stateMachine.c: 140:     if (evento != EV_NOEVENT) {
+[e $ ! != -> _evento `i -> . `E36 5 `i 40  ]
+{
+"141
+[; ;stateMachine.c: 141:         setTimer(0);
+[e ( _setTimer (1 -> 0 `i ]
+"142
+[; ;stateMachine.c: 142:     }
+}
+[e :U 40 ]
+"144
+[; ;stateMachine.c: 144:     if (getTimer() < 2000) {
+[e $ ! < ( _getTimer ..  -> 2000 `i 41  ]
+{
+"145
+[; ;stateMachine.c: 145:         setTimer(getTimer()+1);
+[e ( _setTimer (1 + ( _getTimer ..  -> 1 `i ]
+"146
+[; ;stateMachine.c: 146:     }
+}
+[e :U 41 ]
+"147
+[; ;stateMachine.c: 147:     if(getTimer() >= 2000){
+[e $ ! >= ( _getTimer ..  -> 2000 `i 42  ]
+{
+"148
+[; ;stateMachine.c: 148:         setState(STATE_HOME);
+[e ( _setState (1 -> . `E24 0 `uc ]
+"149
+[; ;stateMachine.c: 149:     }
+}
+[e :U 42 ]
+"151
+[; ;stateMachine.c: 151:     outputPrint(getState(), getLanguage());
+[e ( _outputPrint (2 , -> ( _getState ..  `i ( _getLanguage ..  ]
+"152
+[; ;stateMachine.c: 152: }
+[e :UE 2 ]
+}

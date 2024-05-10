@@ -1,0 +1,20 @@
+** Drc report for C:\Users\Lucas F. Machado\Desktop\PBLE01\PBLE01_Grupo06\PBLE01.kicad_pcb **
+** Created on  **
+
+** Found 4 DRC errors **
+ErrType(19): Ilha muito próxima a ilha
+    @(115,570 mm, 71,942 mm): Ilha 1 de Y3 em Todas as camadas de cobre
+    @(115,570 mm, 73,042 mm): Ilha 2 de Y3 em Todas as camadas de cobre
+ErrType(45): Sobreposição de pátios
+    @(147,053 mm, 56,363 mm): Footprint J3 em F.Cu
+    @(142,314 mm, 60,325 mm): Footprint C6 em F.Cu
+ErrType(45): Sobreposição de pátios
+    @(147,053 mm, 56,363 mm): Footprint J3 em F.Cu
+    @(138,633 mm, 60,198 mm): Footprint R21 em F.Cu
+ErrType(45): Sobreposição de pátios
+    @(176,847 mm, 98,770 mm): Footprint RV2 em F.Cu
+    @(161,064 mm, 93,467 mm): Footprint C14 em F.Cu
+
+** Found 0 unconnected pads **
+
+** End of Report **

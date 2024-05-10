@@ -1,0 +1,45 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP NE555DR
+D Single Precision Timer
+K
+F http://www.ti.com/lit/ds/symlink/ne555.pdf
+$ENDCMP
+#
+$CMP AB38T-32.768KHZ
+D Quarze 32.768KHz
+K
+F http://www.abracon.com/Resonators/AB38T.pdf
+$ENDCMP
+#
+$CMP LM324DG
+D LM324DG, Operational Amplifier 5 to 28V, 14-Pin SOIC
+K
+F http://www.onsemi.com/pub/Collateral/LM324-D.PDF
+$ENDCMP
+#
+$CMP MCP7940N-I_SN
+D Real Time Clock I2C GP RTCC 64B SRAM
+K
+F 
+$ENDCMP
+#
+$CMP P160KN-0QC15B100K
+D Potentiometers 16mm Rotary Panel Potentiometer
+K
+F https://componentsearchengine.com/Datasheets/1/P160KN-0QC15B100K.pdf
+$ENDCMP
+#
+$CMP 897-43-004-90-000000
+D MILL MAX - 897-43-004-90-000000 - USB, 2.0 TYPE B, RECEPTACLE, SMT
+K
+F https://www.mill-max.com/assets/pdfs/metric/148M.pdf
+$ENDCMP
+#
+$CMP F931C106KAA
+D Cap Tant Solid 10uF 16V A CASE 10% (3.2 X 1.6 X 1.6mm) Inward L SMD 3216-18 3 Ohm 125C T/R
+K
+F http://datasheets.avx.com/F93.pdf
+$ENDCMP
+#
+#End Doc Library

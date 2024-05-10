@@ -1,0 +1,158 @@
+Version 4.0 HI-TECH Software Intermediate Code
+[p mainexit ]
+"4 ./keypad.h
+[; ;./keypad.h: 4:  void kpInit(void);
+[v _kpInit `(v ~T0 @X0 0 ef ]
+"27 ./lcd.h
+[; ;./lcd.h: 27:  void lcdInit(void);
+[v _lcdInit `(v ~T0 @X0 0 ef ]
+"27 ./timer.h
+[; ;./timer.h: 27:  void timerInit(void);
+[v _timerInit `(v ~T0 @X0 0 ef ]
+"22 ./var.h
+[; ;./var.h: 22: void varInit(void);
+[v _varInit `(v ~T0 @X0 0 ef ]
+"19 ./event.h
+[; ;./event.h: 19: void eventInit(void);
+[v _eventInit `(v ~T0 @X0 0 ef ]
+"23 ./adc.h
+[; ;./adc.h: 23:  void adcInit(void);
+[v _adcInit `(v ~T0 @X0 0 ef ]
+"13 ./rtc.h
+[; ;./rtc.h: 13:  void dsInit(void);
+[v _dsInit `(v ~T0 @X0 0 ef ]
+"11 ./led.h
+[; ;./led.h: 11: void ledInit();
+[v _ledInit `(v ~T0 @X0 0 e? ]
+"26 ./timer.h
+[; ;./timer.h: 26:  void timerReset(unsigned int tempo);
+[v _timerReset `(v ~T0 @X0 0 ef1`ui ]
+"27 ./stateMachine.h
+[; ;./stateMachine.h: 27: void smLoop(void);
+[v _smLoop `(v ~T0 @X0 0 ef ]
+"24 ./timer.h
+[; ;./timer.h: 24:  void timerWait(void);
+[v _timerWait `(v ~T0 @X0 0 ef ]
+"26 ./config.h
+[p x FOSC  =  HS                  ]
+"27
+[p x FCMEN  =  OFF ]
+"28
+[p x IESO  =  OFF ]
+"29
+[p x PWRT  =  OFF ]
+"30
+[p x BOR  =  OFF ]
+"31
+[p x BORV  =  46 ]
+"32
+[p x WDT=OFF                  ]
+"33
+[p x WDTPS  =  1                ]
+"34
+[p x MCLRE=ON                 ]
+"35
+[p x LPT1OSC  =  OFF ]
+"36
+[p x PBADEN  =  ON ]
+"37
+[p x CCP2MX  =  ON ]
+"38
+[p x STVREN  =  OFF ]
+"39
+[p x LVP=OFF                  ]
+"40
+[p x XINST  =  OFF ]
+"41
+[p x DEBUG  =  OFF              ]
+"43
+[p x CP0  =  OFF ]
+"44
+[p x CP1  =  OFF ]
+"45
+[p x CP2  =  OFF ]
+"46
+[p x CP3  =  OFF ]
+"47
+[p x CPB  =  OFF ]
+"48
+[p x CPD  =  OFF ]
+"50
+[p x WRT0  =  OFF ]
+"51
+[p x WRT1  =  OFF ]
+"52
+[p x WRT2  =  OFF ]
+"53
+[p x WRT3  =  OFF ]
+"54
+[p x WRTB  =  OFF ]
+"55
+[p x WRTC  =  OFF ]
+"56
+[p x WRTD  =  OFF ]
+"58
+[p x EBTR0  =  OFF ]
+"59
+[p x EBTR1  =  OFF ]
+"60
+[p x EBTR2  =  OFF ]
+"61
+[p x EBTR3  =  OFF ]
+"62
+[p x EBTRB  =  OFF ]
+[v $root$_main `(v ~T0 @X0 0 e ]
+"15 main.c
+[; ;main.c: 15: void main(void) {
+[v _main `(v ~T0 @X0 1 ef ]
+{
+[e :U _main ]
+[f ]
+"17
+[; ;main.c: 17:     kpInit();
+[e ( _kpInit ..  ]
+"18
+[; ;main.c: 18:     lcdInit();
+[e ( _lcdInit ..  ]
+"19
+[; ;main.c: 19:     timerInit();
+[e ( _timerInit ..  ]
+"20
+[; ;main.c: 20:     varInit();
+[e ( _varInit ..  ]
+"21
+[; ;main.c: 21:     eventInit();
+[e ( _eventInit ..  ]
+"22
+[; ;main.c: 22:     adcInit();
+[e ( _adcInit ..  ]
+"23
+[; ;main.c: 23:     dsInit();
+[e ( _dsInit ..  ]
+"24
+[; ;main.c: 24:     ledInit();
+[e ( _ledInit ..  ]
+"25
+[; ;main.c: 25:     for (;;) {
+{
+[e :U 2 ]
+{
+"26
+[; ;main.c: 26:         timerReset(1500);
+[e ( _timerReset (1 -> -> 1500 `i `ui ]
+"28
+[; ;main.c: 28:         smLoop();
+[e ( _smLoop ..  ]
+"30
+[; ;main.c: 30:         timerWait();
+[e ( _timerWait ..  ]
+"31
+[; ;main.c: 31:     }
+}
+[e $U 2  ]
+[e :U 3 ]
+}
+"32
+[; ;main.c: 32: }
+[e :UE 1 ]
+}

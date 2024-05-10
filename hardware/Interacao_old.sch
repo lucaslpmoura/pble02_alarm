@@ -1,0 +1,568 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 5 5
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Display_Character:HY1602E DS?
+U 1 1 60B08BF6
+P 6550 3350
+AR Path="/60B08BF6" Ref="DS?"  Part="1" 
+AR Path="/60B0728E/60B08BF6" Ref="DS1"  Part="1" 
+F 0 "DS1" H 6550 4331 50  0000 C CNN
+F 1 "HY1602E" H 6550 4240 50  0000 C CNN
+F 2 "Display:HY1602E" H 6550 2450 50  0001 C CIN
+F 3 "http://www.icbank.com/data/ICBShop/board/HY1602E.pdf" H 6750 3450 50  0001 C CNN
+	1    6550 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60B08BFE
+P 6550 4250
+AR Path="/60B08BFE" Ref="#PWR?"  Part="1" 
+AR Path="/60B0728E/60B08BFE" Ref="#PWR0108"  Part="1" 
+F 0 "#PWR0108" H 6550 4000 50  0001 C CNN
+F 1 "GND" H 6555 4077 50  0000 C CNN
+F 2 "" H 6550 4250 50  0001 C CNN
+F 3 "" H 6550 4250 50  0001 C CNN
+	1    6550 4250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6550 4250 6550 4150
+Wire Wire Line
+	6050 3950 6150 3950
+Wire Wire Line
+	6050 3850 6150 3850
+Wire Wire Line
+	6050 3750 6150 3750
+Wire Wire Line
+	6050 3650 6150 3650
+$Comp
+L power:GND #PWR?
+U 1 1 60B08C0D
+P 5950 2950
+AR Path="/60B08C0D" Ref="#PWR?"  Part="1" 
+AR Path="/60B0728E/60B08C0D" Ref="#PWR0109"  Part="1" 
+F 0 "#PWR0109" H 5950 2700 50  0001 C CNN
+F 1 "GND" H 5955 2777 50  0000 C CNN
+F 2 "" H 5950 2950 50  0001 C CNN
+F 3 "" H 5950 2950 50  0001 C CNN
+	1    5950 2950
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5950 2950 6150 2950
+Wire Wire Line
+	6050 3050 6150 3050
+Wire Wire Line
+	6050 2750 6150 2750
+$Comp
+L power:GND #PWR?
+U 1 1 60B08C21
+P 7100 3650
+AR Path="/60B08C21" Ref="#PWR?"  Part="1" 
+AR Path="/60B0728E/60B08C21" Ref="#PWR0110"  Part="1" 
+F 0 "#PWR0110" H 7100 3400 50  0001 C CNN
+F 1 "GND" H 7105 3477 50  0000 C CNN
+F 2 "" H 7100 3650 50  0001 C CNN
+F 3 "" H 7100 3650 50  0001 C CNN
+	1    7100 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6950 3450 7100 3450
+Wire Wire Line
+	7100 3450 7100 3650
+$Comp
+L power:GND #PWR?
+U 1 1 60B08C30
+P 7200 2950
+AR Path="/60B08C30" Ref="#PWR?"  Part="1" 
+AR Path="/60B0728E/60B08C30" Ref="#PWR0111"  Part="1" 
+F 0 "#PWR0111" H 7200 2700 50  0001 C CNN
+F 1 "GND" H 7205 2777 50  0000 C CNN
+F 2 "" H 7200 2950 50  0001 C CNN
+F 3 "" H 7200 2950 50  0001 C CNN
+	1    7200 2950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Chave_1825910-6:1825910-6 SW?
+U 1 1 60B170D4
+P 9750 2250
+AR Path="/60B170D4" Ref="SW?"  Part="1" 
+AR Path="/60B0728E/60B170D4" Ref="SW2"  Part="1" 
+F 0 "SW2" H 9750 2615 50  0000 C CNN
+F 1 "1825910-6" H 9750 2524 50  0000 C CNN
+F 2 "Chave Táctil:SW_1825910-6-4" H 9750 2250 50  0001 L BNN
+F 3 "" H 9750 2250 50  0001 L BNN
+F 4 "Compliant" H 9750 2250 50  0001 L BNN "EU_RoHS_Compliance"
+F 5 "Single Pole - Single Throw" H 9750 2250 50  0001 L BNN "Configuration_Pole-Throw"
+F 6 "50 mA" H 9750 2250 50  0001 L BNN "Contact_Current_Rating"
+F 7 "1825910-6" H 9750 2250 50  0001 L BNN "Comment"
+	1    9750 2250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Chave_1825910-6:1825910-6 SW?
+U 1 1 60B170DE
+P 9750 3100
+AR Path="/60B170DE" Ref="SW?"  Part="1" 
+AR Path="/60B0728E/60B170DE" Ref="SW3"  Part="1" 
+F 0 "SW3" H 9750 3465 50  0000 C CNN
+F 1 "1825910-6" H 9750 3374 50  0000 C CNN
+F 2 "Chave Táctil:SW_1825910-6-4" H 9750 3100 50  0001 L BNN
+F 3 "" H 9750 3100 50  0001 L BNN
+F 4 "Compliant" H 9750 3100 50  0001 L BNN "EU_RoHS_Compliance"
+F 5 "Single Pole - Single Throw" H 9750 3100 50  0001 L BNN "Configuration_Pole-Throw"
+F 6 "50 mA" H 9750 3100 50  0001 L BNN "Contact_Current_Rating"
+F 7 "1825910-6" H 9750 3100 50  0001 L BNN "Comment"
+	1    9750 3100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Chave_1825910-6:1825910-6 SW?
+U 1 1 60B170E8
+P 9750 3900
+AR Path="/60B170E8" Ref="SW?"  Part="1" 
+AR Path="/60B0728E/60B170E8" Ref="SW4"  Part="1" 
+F 0 "SW4" H 9750 4265 50  0000 C CNN
+F 1 "1825910-6" H 9750 4174 50  0000 C CNN
+F 2 "Chave Táctil:SW_1825910-6-4" H 9750 3900 50  0001 L BNN
+F 3 "" H 9750 3900 50  0001 L BNN
+F 4 "Compliant" H 9750 3900 50  0001 L BNN "EU_RoHS_Compliance"
+F 5 "Single Pole - Single Throw" H 9750 3900 50  0001 L BNN "Configuration_Pole-Throw"
+F 6 "50 mA" H 9750 3900 50  0001 L BNN "Contact_Current_Rating"
+F 7 "1825910-6" H 9750 3900 50  0001 L BNN "Comment"
+	1    9750 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Chave_1825910-6:1825910-6 SW?
+U 1 1 60B170F2
+P 9750 5450
+AR Path="/60B170F2" Ref="SW?"  Part="1" 
+AR Path="/60B0728E/60B170F2" Ref="SW6"  Part="1" 
+F 0 "SW6" H 9750 5815 50  0000 C CNN
+F 1 "1825910-6" H 9750 5724 50  0000 C CNN
+F 2 "Chave Táctil:SW_1825910-6-4" H 9750 5450 50  0001 L BNN
+F 3 "" H 9750 5450 50  0001 L BNN
+F 4 "Compliant" H 9750 5450 50  0001 L BNN "EU_RoHS_Compliance"
+F 5 "Single Pole - Single Throw" H 9750 5450 50  0001 L BNN "Configuration_Pole-Throw"
+F 6 "50 mA" H 9750 5450 50  0001 L BNN "Contact_Current_Rating"
+F 7 "1825910-6" H 9750 5450 50  0001 L BNN "Comment"
+	1    9750 5450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Chave_1825910-6:1825910-6 SW?
+U 1 1 60B170FC
+P 9750 4650
+AR Path="/60B170FC" Ref="SW?"  Part="1" 
+AR Path="/60B0728E/60B170FC" Ref="SW5"  Part="1" 
+F 0 "SW5" H 9750 5015 50  0000 C CNN
+F 1 "1825910-6" H 9750 4924 50  0000 C CNN
+F 2 "Chave Táctil:SW_1825910-6-4" H 9750 4650 50  0001 L BNN
+F 3 "" H 9750 4650 50  0001 L BNN
+F 4 "Compliant" H 9750 4650 50  0001 L BNN "EU_RoHS_Compliance"
+F 5 "Single Pole - Single Throw" H 9750 4650 50  0001 L BNN "Configuration_Pole-Throw"
+F 6 "50 mA" H 9750 4650 50  0001 L BNN "Contact_Current_Rating"
+F 7 "1825910-6" H 9750 4650 50  0001 L BNN "Comment"
+	1    9750 4650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9150 2150 9350 2150
+Wire Wire Line
+	9150 3000 9350 3000
+Wire Wire Line
+	9100 3800 9350 3800
+Wire Wire Line
+	9100 4550 9350 4550
+Wire Wire Line
+	9100 5350 9350 5350
+$Comp
+L power:GND #PWR?
+U 1 1 60B17111
+P 8550 3550
+AR Path="/60B17111" Ref="#PWR?"  Part="1" 
+AR Path="/60B0728E/60B17111" Ref="#PWR0112"  Part="1" 
+F 0 "#PWR0112" H 8550 3300 50  0001 C CNN
+F 1 "GND" V 8555 3422 50  0000 R CNN
+F 2 "" H 8550 3550 50  0001 C CNN
+F 3 "" H 8550 3550 50  0001 C CNN
+	1    8550 3550
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	9150 2250 8800 2250
+Wire Wire Line
+	8800 2250 8800 3100
+Wire Wire Line
+	8800 3100 9150 3100
+Wire Wire Line
+	9150 2250 9150 2150
+Wire Wire Line
+	9150 3100 9150 3000
+Wire Wire Line
+	9100 3900 8800 3900
+Wire Wire Line
+	8800 3900 8800 3550
+Wire Wire Line
+	9100 3900 9100 3800
+Connection ~ 8800 3100
+Wire Wire Line
+	9100 4650 8800 4650
+Wire Wire Line
+	8800 4650 8800 3900
+Wire Wire Line
+	9100 4650 9100 4550
+Connection ~ 8800 3900
+Wire Wire Line
+	8800 5450 8800 4650
+Connection ~ 8800 4650
+Wire Wire Line
+	8550 3550 8800 3550
+Connection ~ 8800 3550
+Wire Wire Line
+	8800 3550 8800 3100
+$Comp
+L Device:R_POT RV?
+U 1 1 60B2347D
+P 1350 2900
+AR Path="/60B2347D" Ref="RV?"  Part="1" 
+AR Path="/60B0728E/60B2347D" Ref="RV2"  Part="1" 
+F 0 "RV2" H 1281 2946 50  0000 R CNN
+F 1 "R_POT" H 1281 2855 50  0000 R CNN
+F 2 "SamacSys_Parts:P160KN0QC15B100K" H 1350 2900 50  0001 C CNN
+F 3 "~" H 1350 2900 50  0001 C CNN
+	1    1350 2900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60B23485
+P 1350 3150
+AR Path="/60B23485" Ref="#PWR?"  Part="1" 
+AR Path="/60B0728E/60B23485" Ref="#PWR0113"  Part="1" 
+F 0 "#PWR0113" H 1350 2900 50  0001 C CNN
+F 1 "GND" H 1355 2977 50  0000 C CNN
+F 2 "" H 1350 3150 50  0001 C CNN
+F 3 "" H 1350 3150 50  0001 C CNN
+	1    1350 3150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1350 3150 1350 3050
+Wire Wire Line
+	1500 2900 1600 2900
+Wire Wire Line
+	10150 2150 10300 2150
+Wire Wire Line
+	10300 2150 10300 2250
+Wire Wire Line
+	10300 2250 10450 2250
+Wire Wire Line
+	10300 3100 10450 3100
+Wire Wire Line
+	10150 3000 10300 3000
+Wire Wire Line
+	10300 3000 10300 3100
+Wire Wire Line
+	10300 3900 10450 3900
+Wire Wire Line
+	10150 3800 10300 3800
+Wire Wire Line
+	10300 3800 10300 3900
+Wire Wire Line
+	10300 4650 10450 4650
+Wire Wire Line
+	10150 4550 10300 4550
+Wire Wire Line
+	10300 4550 10300 4650
+Wire Wire Line
+	10300 5450 10450 5450
+Wire Wire Line
+	10150 5350 10300 5350
+Wire Wire Line
+	10300 5350 10300 5450
+Text Notes 8700 1550 0    50   ~ 0
+Este bloco vai usar os resistores de pull-up interno do PIC
+$Comp
+L Device:R_POT_TRIM RV1
+U 1 1 60B2E369
+P 7200 2750
+F 0 "RV1" H 7130 2704 50  0000 R CNN
+F 1 "10k" H 7130 2795 50  0000 R CNN
+F 2 "Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical" H 7200 2750 50  0001 C CNN
+F 3 "~" H 7200 2750 50  0001 C CNN
+	1    7200 2750
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7200 2950 7200 2900
+Wire Wire Line
+	6950 2750 7050 2750
+$Comp
+L power:+5V #PWR0129
+U 1 1 60C16687
+P 6550 2250
+F 0 "#PWR0129" H 6550 2100 50  0001 C CNN
+F 1 "+5V" H 6565 2423 50  0000 C CNN
+F 2 "" H 6550 2250 50  0001 C CNN
+F 3 "" H 6550 2250 50  0001 C CNN
+	1    6550 2250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6550 2550 6550 2250
+$Comp
+L power:+5V #PWR0130
+U 1 1 60C181C1
+P 7200 2500
+F 0 "#PWR0130" H 7200 2350 50  0001 C CNN
+F 1 "+5V" H 7215 2673 50  0000 C CNN
+F 2 "" H 7200 2500 50  0001 C CNN
+F 3 "" H 7200 2500 50  0001 C CNN
+	1    7200 2500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7200 2600 7200 2500
+$Comp
+L power:+5V #PWR0131
+U 1 1 60C1AE62
+P 7000 3350
+F 0 "#PWR0131" H 7000 3200 50  0001 C CNN
+F 1 "+5V" H 7015 3523 50  0000 C CNN
+F 2 "" H 7000 3350 50  0001 C CNN
+F 3 "" H 7000 3350 50  0001 C CNN
+	1    7000 3350
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6950 3350 7000 3350
+$Comp
+L power:+5V #PWR0132
+U 1 1 60C1EF5B
+P 1350 2600
+F 0 "#PWR0132" H 1350 2450 50  0001 C CNN
+F 1 "+5V" H 1365 2773 50  0000 C CNN
+F 2 "" H 1350 2600 50  0001 C CNN
+F 3 "" H 1350 2600 50  0001 C CNN
+	1    1350 2600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1350 2750 1350 2600
+Text Notes 5750 1750 0    50   ~ 0
+Será elaborada uma biblioteca para fazer \ncom que o display use apenas 4 pinos de dados 
+NoConn ~ 6150 3250
+NoConn ~ 6150 3350
+NoConn ~ 6150 3450
+NoConn ~ 6150 3550
+$Comp
+L Device:R R17
+U 1 1 60D42F19
+P 3500 2200
+F 0 "R17" V 3707 2200 50  0000 C CNN
+F 1 "330" V 3616 2200 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" V 3430 2200 50  0001 C CNN
+F 3 "~" H 3500 2200 50  0001 C CNN
+	1    3500 2200
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED D3
+U 1 1 60D43538
+P 4000 2200
+F 0 "D3" H 3993 1945 50  0000 C CNN
+F 1 "LED" H 3993 2036 50  0000 C CNN
+F 2 "LED:LTST-C150GKT" H 4000 2200 50  0001 C CNN
+F 3 "~" H 4000 2200 50  0001 C CNN
+	1    4000 2200
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	3650 2200 3850 2200
+$Comp
+L Device:R R18
+U 1 1 60D489C2
+P 3500 2700
+F 0 "R18" V 3707 2700 50  0000 C CNN
+F 1 "330" V 3616 2700 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" V 3430 2700 50  0001 C CNN
+F 3 "~" H 3500 2700 50  0001 C CNN
+	1    3500 2700
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED D4
+U 1 1 60D489C8
+P 4000 2700
+F 0 "D4" H 3993 2445 50  0000 C CNN
+F 1 "LED" H 3993 2536 50  0000 C CNN
+F 2 "LED:LTST-C150GKT" H 4000 2700 50  0001 C CNN
+F 3 "~" H 4000 2700 50  0001 C CNN
+	1    4000 2700
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	3650 2700 3850 2700
+$Comp
+L Device:R R19
+U 1 1 60D4A2EA
+P 3500 3250
+F 0 "R19" V 3707 3250 50  0000 C CNN
+F 1 "330" V 3616 3250 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" V 3430 3250 50  0001 C CNN
+F 3 "~" H 3500 3250 50  0001 C CNN
+	1    3500 3250
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED D5
+U 1 1 60D4A2F0
+P 4000 3250
+F 0 "D5" H 3993 2995 50  0000 C CNN
+F 1 "LED" H 3993 3086 50  0000 C CNN
+F 2 "LED:LTST-C150GKT" H 4000 3250 50  0001 C CNN
+F 3 "~" H 4000 3250 50  0001 C CNN
+	1    4000 3250
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	3650 3250 3850 3250
+$Comp
+L Device:R R20
+U 1 1 60D4BF10
+P 3500 3800
+F 0 "R20" V 3707 3800 50  0000 C CNN
+F 1 "330" V 3616 3800 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" V 3430 3800 50  0001 C CNN
+F 3 "~" H 3500 3800 50  0001 C CNN
+	1    3500 3800
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED D6
+U 1 1 60D4BF16
+P 4000 3800
+F 0 "D6" H 3993 3545 50  0000 C CNN
+F 1 "LED" H 3993 3636 50  0000 C CNN
+F 2 "LED:LTST-C150GKT" H 4000 3800 50  0001 C CNN
+F 3 "~" H 4000 3800 50  0001 C CNN
+	1    4000 3800
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	3650 3800 3850 3800
+Wire Wire Line
+	4150 3800 4350 3800
+Wire Wire Line
+	4350 3800 4350 3250
+Wire Wire Line
+	4350 2200 4150 2200
+Wire Wire Line
+	4150 2700 4350 2700
+Connection ~ 4350 2700
+Wire Wire Line
+	4350 2700 4350 2200
+Wire Wire Line
+	4150 3250 4350 3250
+Connection ~ 4350 3250
+Wire Wire Line
+	4350 3250 4350 2950
+$Comp
+L power:GND #PWR0106
+U 1 1 60D53CF4
+P 4700 3150
+F 0 "#PWR0106" H 4700 2900 50  0001 C CNN
+F 1 "GND" H 4705 2977 50  0000 C CNN
+F 2 "" H 4700 3150 50  0001 C CNN
+F 3 "" H 4700 3150 50  0001 C CNN
+	1    4700 3150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4350 2950 4700 2950
+Wire Wire Line
+	4700 2950 4700 3150
+Connection ~ 4350 2950
+Wire Wire Line
+	4350 2950 4350 2700
+Wire Wire Line
+	3200 3800 3350 3800
+Text Notes 9200 1200 0    207  ~ 41
+TECLADO
+Text Notes 5850 1250 0    207  ~ 41
+VISOR LCD
+Text Notes 2800 1650 0    207  ~ 41
+SINALIZAÇÃO\n
+Text Notes 750  2150 0    168  ~ 34
+ENTRADA\nANALÓGICA
+Text HLabel 1600 2900 2    50   Output ~ 0
+TRIMPOT
+Text HLabel 3200 3250 0    50   Input ~ 0
+RC4
+Text HLabel 3200 3800 0    50   Input ~ 0
+RC5
+Wire Wire Line
+	3200 3250 3350 3250
+Text HLabel 6050 3650 0    50   Input ~ 0
+DB4
+Text HLabel 6050 3750 0    50   Input ~ 0
+DB5
+Text HLabel 6050 3850 0    50   Input ~ 0
+DB6
+Text HLabel 6050 3950 0    50   Input ~ 0
+DB7
+Text HLabel 6050 3050 0    50   Input ~ 0
+RS
+Text HLabel 6050 2750 0    50   Input ~ 0
+EN
+Text HLabel 10450 2250 2    50   Output ~ 0
+CHAVE1
+Text HLabel 10450 3100 2    50   Output ~ 0
+CHAVE2
+Text HLabel 10450 3900 2    50   Output ~ 0
+CHAVE3
+Text HLabel 10450 4650 2    50   Output ~ 0
+CHAVE4
+Text HLabel 10450 5450 2    50   Output ~ 0
+CHAVE5
+Text HLabel 3150 2200 0    50   Input ~ 0
+TX
+Text HLabel 3150 2700 0    50   Input ~ 0
+RX
+Wire Wire Line
+	3150 2200 3350 2200
+Wire Wire Line
+	3150 2700 3350 2700
+Wire Wire Line
+	9100 5450 9100 5350
+Wire Wire Line
+	8800 5450 9100 5450
+NoConn ~ 9350 5550
+NoConn ~ 10150 5550
+NoConn ~ 9350 4750
+NoConn ~ 10150 4750
+NoConn ~ 9350 4000
+NoConn ~ 10150 4000
+NoConn ~ 9350 3200
+NoConn ~ 10150 3200
+NoConn ~ 9350 2350
+NoConn ~ 10150 2350
+$EndSCHEMATC

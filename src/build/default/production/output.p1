@@ -1,0 +1,645 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"27 ./lcd.h
+[; ;./lcd.h: 27:  void lcdInit(void);
+[v _lcdInit `(v ~T0 @X0 0 ef ]
+"23
+[; ;./lcd.h: 23:  void lcdCommand(unsigned char cmd);
+[v _lcdCommand `(v ~T0 @X0 0 ef1`uc ]
+"58 output.c
+[; ;output.c: 58:     if (numTela == STATE_HOME) {
+[c E21 0 1 2 3 4 5 6 7 8 .. ]
+[n E21 . STATE_HOME STATE_IDIOMA STATE_ALARME_1 STATE_ALARME_2 STATE_ALARME_1_ALTO STATE_ALARME_1_BAIXO STATE_ALARME_2_ALTO STATE_ALARME_2_BAIXO STATE_FIM  ]
+"25 ./serial.h
+[; ;./serial.h: 25: void serialSend(unsigned char c);
+[v _serialSend `(v ~T0 @X0 0 ef1`uc ]
+"29 ./lcd.h
+[; ;./lcd.h: 29:     void lcdString(char msg[]);
+[v _lcdString `(v ~T0 @X0 0 ef1`*uc ]
+"28
+[; ;./lcd.h: 28:     void lcdInt(int);
+[v _lcdInt `(v ~T0 @X0 0 ef1`i ]
+"36 ./var.h
+[; ;./var.h: 36: int getSensorValue(int sensor);
+[v _getSensorValue `(i ~T0 @X0 0 ef1`i ]
+"24 ./serial.h
+[; ;./serial.h: 24: void serialString(char msg[]);
+[v _serialString `(v ~T0 @X0 0 ef1`*uc ]
+"23
+[; ;./serial.h: 23: void serialInt(int val);
+[v _serialInt `(v ~T0 @X0 0 ef1`i ]
+"31 ./var.h
+[; ;./var.h: 31: int checkAlarm(int alarm, int level);
+[v _checkAlarm `(i ~T0 @X0 0 ef2`i`i ]
+"14 ./led.h
+[; ;./led.h: 14: void ledBlink(int pos);
+[v _ledBlink `(v ~T0 @X0 0 ef1`i ]
+"13
+[; ;./led.h: 13: void ledOff(int pos);
+[v _ledOff `(v ~T0 @X0 0 ef1`i ]
+"29 ./var.h
+[; ;./var.h: 29: int getAlarmLevel(int alarm, int level);
+[v _getAlarmLevel `(i ~T0 @X0 0 ef2`i`i ]
+[v F71 `*uc ~T0 @X0 -> 2 `i t ]
+"14 output.c
+[; ;output.c: 14: static char * msgsL1[STATE_FIM][2] = {
+[v _msgsL1 `F71 ~T0 @X0 -> 8 `i s ]
+[i _msgsL1
+:U ..
+:U ..
+:s 1C
+:s 2C
+..
+:U ..
+:s 3C
+:s 4C
+..
+:U ..
+:s 5C
+:s 6C
+..
+:U ..
+:s 7C
+:s 8C
+..
+:U ..
+:s 9C
+:s 10C
+..
+:U ..
+:s 11C
+:s 12C
+..
+:U ..
+:s 13C
+:s 14C
+..
+:U ..
+:s 15C
+:s 16C
+..
+..
+]
+[v F73 `*uc ~T0 @X0 -> 2 `i t ]
+"25
+[; ;output.c: 25: static char * msgsL2[STATE_FIM][2] = {
+[v _msgsL2 `F73 ~T0 @X0 -> 8 `i s ]
+[i _msgsL2
+:U ..
+:U ..
+:s 17C
+:s 18C
+..
+:U ..
+:s 19C
+:s 20C
+..
+:U ..
+:s 21C
+:s 22C
+..
+:U ..
+:s 23C
+:s 24C
+..
+:U ..
+:s 25C
+:s 26C
+..
+:U ..
+:s 27C
+:s 28C
+..
+:U ..
+:s 29C
+:s 30C
+..
+:U ..
+:s 31C
+:s 32C
+..
+..
+]
+[v F75 `*uc ~T0 @X0 -> 2 `i t ]
+"36
+[; ;output.c: 36: static char * lcdAlerts[2][2] = {
+[v _lcdAlerts `F75 ~T0 @X0 -> 2 `i s ]
+[i _lcdAlerts
+:U ..
+:U ..
+:s 33C
+:s 34C
+..
+:U ..
+:s 35C
+:s 36C
+..
+..
+]
+[v F77 `*uc ~T0 @X0 -> 2 `i t ]
+"41
+[; ;output.c: 41: static char * serialAlerts[2][2] = {
+[v _serialAlerts `F77 ~T0 @X0 -> 2 `i s ]
+[i _serialAlerts
+:U ..
+:U ..
+:s 37C
+:s 38C
+..
+:U ..
+:s 39C
+:s 40C
+..
+..
+]
+"46
+[; ;output.c: 46: static int tela_ant = 0;
+[v _tela_ant `i ~T0 @X0 1 s ]
+[i _tela_ant
+-> 0 `i
+]
+"48
+[; ;output.c: 48: void outputInit(void) {
+[v _outputInit `(v ~T0 @X0 1 ef ]
+{
+[e :U _outputInit ]
+[f ]
+"49
+[; ;output.c: 49:     lcdInit();
+[e ( _lcdInit ..  ]
+"50
+[; ;output.c: 50: }
+[e :UE 1 ]
+}
+"52
+[; ;output.c: 52: void outputPrint(int numTela, int idioma) {
+[v _outputPrint `(v ~T0 @X0 1 ef2`i`i ]
+{
+[e :U _outputPrint ]
+[v _numTela `i ~T0 @X0 1 r1 ]
+[v _idioma `i ~T0 @X0 1 r2 ]
+[f ]
+"54
+[; ;output.c: 54:     if (numTela != tela_ant) {
+[e $ ! != _numTela _tela_ant 3  ]
+{
+"55
+[; ;output.c: 55:         lcdCommand(0x01);
+[e ( _lcdCommand (1 -> -> 1 `i `uc ]
+"56
+[; ;output.c: 56:         tela_ant = numTela;
+[e = _tela_ant _numTela ]
+"57
+[; ;output.c: 57:     }
+}
+[e :U 3 ]
+"58
+[; ;output.c: 58:     if (numTela == STATE_HOME) {
+[e $ ! == _numTela -> . `E21 0 `i 4  ]
+{
+"59
+[; ;output.c: 59:         lcdCommand(0x80);
+[e ( _lcdCommand (1 -> -> 128 `i `uc ]
+"62
+[; ;output.c: 62:         serialSend('\12');
+[e ( _serialSend (1 -> -> 10 `ui `uc ]
+"63
+[; ;output.c: 63:         lcdString(msgsL1[numTela][idioma]);
+[e ( _lcdString (1 *U + &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"64
+[; ;output.c: 64:         lcdInt(getSensorValue(0));
+[e ( _lcdInt (1 ( _getSensorValue (1 -> 0 `i ]
+"65
+[; ;output.c: 65:         serialString(msgsL1[numTela][idioma]);
+[e ( _serialString (1 *U + &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"66
+[; ;output.c: 66:         serialInt(getSensorValue(0));
+[e ( _serialInt (1 ( _getSensorValue (1 -> 0 `i ]
+"67
+[; ;output.c: 67:         serialSend('\12');
+[e ( _serialSend (1 -> -> 10 `ui `uc ]
+"68
+[; ;output.c: 68:         if (checkAlarm(0, 0)) {
+[e $ ! != ( _checkAlarm (2 , -> 0 `i -> 0 `i -> 0 `i 5  ]
+{
+"69
+[; ;output.c: 69:             lcdString(lcdAlerts[0][idioma]);
+[e ( _lcdString (1 *U + &U *U + &U _lcdAlerts * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcdAlerts `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _lcdAlerts * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcdAlerts `ui -> -> 2 `i `ui `ux `ui `ux ]
+"70
+[; ;output.c: 70:             serialString(serialAlerts[0][idioma]);
+[e ( _serialString (1 *U + &U *U + &U _serialAlerts * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _serialAlerts `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _serialAlerts * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _serialAlerts `ui -> -> 2 `i `ui `ux `ui `ux ]
+"71
+[; ;output.c: 71:             serialSend('\12');
+[e ( _serialSend (1 -> -> 10 `ui `uc ]
+"72
+[; ;output.c: 72:             ledBlink(1);
+[e ( _ledBlink (1 -> 1 `i ]
+"73
+[; ;output.c: 73:         } else if (checkAlarm(0, 1)) {
+}
+[e $U 6  ]
+[e :U 5 ]
+[e $ ! != ( _checkAlarm (2 , -> 0 `i -> 1 `i -> 0 `i 7  ]
+{
+"74
+[; ;output.c: 74:             lcdString(lcdAlerts[1][idioma]);
+[e ( _lcdString (1 *U + &U *U + &U _lcdAlerts * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcdAlerts `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _lcdAlerts * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcdAlerts `ui -> -> 2 `i `ui `ux `ui `ux ]
+"75
+[; ;output.c: 75:             serialString(serialAlerts[1][idioma]);
+[e ( _serialString (1 *U + &U *U + &U _serialAlerts * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _serialAlerts `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _serialAlerts * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _serialAlerts `ui -> -> 2 `i `ui `ux `ui `ux ]
+"76
+[; ;output.c: 76:             serialSend('\12');
+[e ( _serialSend (1 -> -> 10 `ui `uc ]
+"77
+[; ;output.c: 77:             ledBlink(1);
+[e ( _ledBlink (1 -> 1 `i ]
+"78
+[; ;output.c: 78:         } else {
+}
+[e $U 8  ]
+[e :U 7 ]
+{
+"79
+[; ;output.c: 79:             lcdString("    ");
+[e ( _lcdString (1 :s 41C ]
+"80
+[; ;output.c: 80:             ledOff(1);
+[e ( _ledOff (1 -> 1 `i ]
+"81
+[; ;output.c: 81:         }
+}
+[e :U 8 ]
+[e :U 6 ]
+"82
+[; ;output.c: 82:         lcdCommand(0xC0);
+[e ( _lcdCommand (1 -> -> 192 `i `uc ]
+"85
+[; ;output.c: 85:         serialSend('\12');
+[e ( _serialSend (1 -> -> 10 `ui `uc ]
+"86
+[; ;output.c: 86:         lcdString(msgsL2[numTela][idioma]);
+[e ( _lcdString (1 *U + &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"87
+[; ;output.c: 87:         lcdInt(getSensorValue(1));
+[e ( _lcdInt (1 ( _getSensorValue (1 -> 1 `i ]
+"88
+[; ;output.c: 88:         serialString(msgsL2[numTela][idioma]);
+[e ( _serialString (1 *U + &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"89
+[; ;output.c: 89:         serialInt(getSensorValue(1));
+[e ( _serialInt (1 ( _getSensorValue (1 -> 1 `i ]
+"90
+[; ;output.c: 90:         serialSend('\12');
+[e ( _serialSend (1 -> -> 10 `ui `uc ]
+"91
+[; ;output.c: 91:         if (checkAlarm(1, 0)) {
+[e $ ! != ( _checkAlarm (2 , -> 1 `i -> 0 `i -> 0 `i 9  ]
+{
+"92
+[; ;output.c: 92:             lcdString(lcdAlerts[0][idioma]);
+[e ( _lcdString (1 *U + &U *U + &U _lcdAlerts * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcdAlerts `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _lcdAlerts * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcdAlerts `ui -> -> 2 `i `ui `ux `ui `ux ]
+"93
+[; ;output.c: 93:             serialString(serialAlerts[0][idioma]);
+[e ( _serialString (1 *U + &U *U + &U _serialAlerts * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _serialAlerts `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _serialAlerts * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _serialAlerts `ui -> -> 2 `i `ui `ux `ui `ux ]
+"94
+[; ;output.c: 94:             serialSend('\12');
+[e ( _serialSend (1 -> -> 10 `ui `uc ]
+"95
+[; ;output.c: 95:             ledBlink(2);
+[e ( _ledBlink (1 -> 2 `i ]
+"96
+[; ;output.c: 96:             serialInt(checkAlarm(1, 0));
+[e ( _serialInt (1 ( _checkAlarm (2 , -> 1 `i -> 0 `i ]
+"97
+[; ;output.c: 97:         } else if (checkAlarm(1, 1)) {
+}
+[e $U 10  ]
+[e :U 9 ]
+[e $ ! != ( _checkAlarm (2 , -> 1 `i -> 1 `i -> 0 `i 11  ]
+{
+"98
+[; ;output.c: 98:             lcdString(lcdAlerts[1][idioma]);
+[e ( _lcdString (1 *U + &U *U + &U _lcdAlerts * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcdAlerts `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _lcdAlerts * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcdAlerts `ui -> -> 2 `i `ui `ux `ui `ux ]
+"99
+[; ;output.c: 99:             serialString(serialAlerts[1][idioma]);
+[e ( _serialString (1 *U + &U *U + &U _serialAlerts * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _serialAlerts `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _serialAlerts * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _serialAlerts `ui -> -> 2 `i `ui `ux `ui `ux ]
+"100
+[; ;output.c: 100:             serialSend('\12');
+[e ( _serialSend (1 -> -> 10 `ui `uc ]
+"101
+[; ;output.c: 101:             ledBlink(2);
+[e ( _ledBlink (1 -> 2 `i ]
+"102
+[; ;output.c: 102:         } else {
+}
+[e $U 12  ]
+[e :U 11 ]
+{
+"103
+[; ;output.c: 103:             lcdString("    ");
+[e ( _lcdString (1 :s 42C ]
+"104
+[; ;output.c: 104:             ledOff(2);
+[e ( _ledOff (1 -> 2 `i ]
+"105
+[; ;output.c: 105:         }
+}
+[e :U 12 ]
+[e :U 10 ]
+"106
+[; ;output.c: 106:     }
+}
+[e :U 4 ]
+"107
+[; ;output.c: 107:     if (numTela == STATE_IDIOMA) {
+[e $ ! == _numTela -> . `E21 1 `i 13  ]
+{
+"108
+[; ;output.c: 108:         lcdCommand(0x80);
+[e ( _lcdCommand (1 -> -> 128 `i `uc ]
+"109
+[; ;output.c: 109:         lcdString(msgsL1[numTela][idioma]);
+[e ( _lcdString (1 *U + &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"110
+[; ;output.c: 110:         lcdCommand(0xC0);
+[e ( _lcdCommand (1 -> -> 192 `i `uc ]
+"111
+[; ;output.c: 111:         lcdString(msgsL2[numTela][idioma]);
+[e ( _lcdString (1 *U + &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"113
+[; ;output.c: 113:         serialSend('\12');
+[e ( _serialSend (1 -> -> 10 `ui `uc ]
+"114
+[; ;output.c: 114:         serialString(msgsL1[numTela][idioma]);
+[e ( _serialString (1 *U + &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"115
+[; ;output.c: 115:         serialSend('\12');
+[e ( _serialSend (1 -> -> 10 `ui `uc ]
+"116
+[; ;output.c: 116:         serialString(msgsL2[numTela][idioma]);
+[e ( _serialString (1 *U + &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"117
+[; ;output.c: 117:     }
+}
+[e :U 13 ]
+"119
+[; ;output.c: 119:     if (numTela == STATE_ALARME_1) {
+[e $ ! == _numTela -> . `E21 2 `i 14  ]
+{
+"120
+[; ;output.c: 120:         lcdCommand(0x80);
+[e ( _lcdCommand (1 -> -> 128 `i `uc ]
+"121
+[; ;output.c: 121:         lcdString(msgsL1[numTela][idioma]);
+[e ( _lcdString (1 *U + &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"122
+[; ;output.c: 122:         lcdCommand(0xC0);
+[e ( _lcdCommand (1 -> -> 192 `i `uc ]
+"123
+[; ;output.c: 123:         lcdString(msgsL2[numTela][idioma]);
+[e ( _lcdString (1 *U + &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"124
+[; ;output.c: 124:         serialSend('\12');
+[e ( _serialSend (1 -> -> 10 `ui `uc ]
+"125
+[; ;output.c: 125:         serialString(msgsL1[numTela][idioma]);
+[e ( _serialString (1 *U + &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"126
+[; ;output.c: 126:         serialSend('\12');
+[e ( _serialSend (1 -> -> 10 `ui `uc ]
+"127
+[; ;output.c: 127:         serialString(msgsL2[numTela][idioma]);
+[e ( _serialString (1 *U + &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"128
+[; ;output.c: 128:     }
+}
+[e :U 14 ]
+"129
+[; ;output.c: 129:     if (numTela == STATE_ALARME_2) {
+[e $ ! == _numTela -> . `E21 3 `i 15  ]
+{
+"130
+[; ;output.c: 130:         lcdCommand(0x80);
+[e ( _lcdCommand (1 -> -> 128 `i `uc ]
+"131
+[; ;output.c: 131:         lcdString(msgsL1[numTela][idioma]);
+[e ( _lcdString (1 *U + &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"132
+[; ;output.c: 132:         lcdCommand(0xC0);
+[e ( _lcdCommand (1 -> -> 192 `i `uc ]
+"133
+[; ;output.c: 133:         lcdString(msgsL2[numTela][idioma]);
+[e ( _lcdString (1 *U + &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"135
+[; ;output.c: 135:         serialSend('\12');
+[e ( _serialSend (1 -> -> 10 `ui `uc ]
+"136
+[; ;output.c: 136:         serialString(msgsL1[numTela][idioma]);
+[e ( _serialString (1 *U + &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"137
+[; ;output.c: 137:         serialSend('\12');
+[e ( _serialSend (1 -> -> 10 `ui `uc ]
+"138
+[; ;output.c: 138:         serialString(msgsL2[numTela][idioma]);
+[e ( _serialString (1 *U + &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"139
+[; ;output.c: 139:     }
+}
+[e :U 15 ]
+"141
+[; ;output.c: 141:     if (numTela == STATE_ALARME_1_ALTO) {
+[e $ ! == _numTela -> . `E21 4 `i 16  ]
+{
+"142
+[; ;output.c: 142:         lcdCommand(0x80);
+[e ( _lcdCommand (1 -> -> 128 `i `uc ]
+"143
+[; ;output.c: 143:         lcdString(msgsL1[numTela][idioma]);
+[e ( _lcdString (1 *U + &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"144
+[; ;output.c: 144:         lcdCommand(0xC0);
+[e ( _lcdCommand (1 -> -> 192 `i `uc ]
+"145
+[; ;output.c: 145:         lcdString(msgsL2[numTela][idioma]);
+[e ( _lcdString (1 *U + &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"146
+[; ;output.c: 146:         lcdInt(getAlarmLevel(0, 0));
+[e ( _lcdInt (1 ( _getAlarmLevel (2 , -> 0 `i -> 0 `i ]
+"148
+[; ;output.c: 148:         serialSend('\12');
+[e ( _serialSend (1 -> -> 10 `ui `uc ]
+"149
+[; ;output.c: 149:         serialString(msgsL1[numTela][idioma]);
+[e ( _serialString (1 *U + &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"150
+[; ;output.c: 150:         serialSend('\12');
+[e ( _serialSend (1 -> -> 10 `ui `uc ]
+"151
+[; ;output.c: 151:         serialString(msgsL2[numTela][idioma]);
+[e ( _serialString (1 *U + &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"152
+[; ;output.c: 152:         serialInt(getAlarmLevel(0, 0));
+[e ( _serialInt (1 ( _getAlarmLevel (2 , -> 0 `i -> 0 `i ]
+"153
+[; ;output.c: 153:     }
+}
+[e :U 16 ]
+"155
+[; ;output.c: 155:     if (numTela == STATE_ALARME_1_BAIXO) {
+[e $ ! == _numTela -> . `E21 5 `i 17  ]
+{
+"156
+[; ;output.c: 156:         lcdCommand(0x80);
+[e ( _lcdCommand (1 -> -> 128 `i `uc ]
+"157
+[; ;output.c: 157:         lcdString(msgsL1[numTela][idioma]);
+[e ( _lcdString (1 *U + &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"158
+[; ;output.c: 158:         lcdCommand(0xC0);
+[e ( _lcdCommand (1 -> -> 192 `i `uc ]
+"159
+[; ;output.c: 159:         lcdString(msgsL2[numTela][idioma]);
+[e ( _lcdString (1 *U + &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"160
+[; ;output.c: 160:         lcdInt(getAlarmLevel(0, 1));
+[e ( _lcdInt (1 ( _getAlarmLevel (2 , -> 0 `i -> 1 `i ]
+"162
+[; ;output.c: 162:         serialSend('\12');
+[e ( _serialSend (1 -> -> 10 `ui `uc ]
+"163
+[; ;output.c: 163:         serialString(msgsL1[numTela][idioma]);
+[e ( _serialString (1 *U + &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"164
+[; ;output.c: 164:         serialSend('\12');
+[e ( _serialSend (1 -> -> 10 `ui `uc ]
+"165
+[; ;output.c: 165:         serialString(msgsL2[numTela][idioma]);
+[e ( _serialString (1 *U + &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"166
+[; ;output.c: 166:         serialInt(getAlarmLevel(0, 1));
+[e ( _serialInt (1 ( _getAlarmLevel (2 , -> 0 `i -> 1 `i ]
+"167
+[; ;output.c: 167:     }
+}
+[e :U 17 ]
+"169
+[; ;output.c: 169:     if (numTela == STATE_ALARME_2_ALTO) {
+[e $ ! == _numTela -> . `E21 6 `i 18  ]
+{
+"170
+[; ;output.c: 170:         lcdCommand(0x80);
+[e ( _lcdCommand (1 -> -> 128 `i `uc ]
+"171
+[; ;output.c: 171:         lcdString(msgsL1[numTela][idioma]);
+[e ( _lcdString (1 *U + &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"172
+[; ;output.c: 172:         lcdCommand(0xC0);
+[e ( _lcdCommand (1 -> -> 192 `i `uc ]
+"173
+[; ;output.c: 173:         lcdString(msgsL2[numTela][idioma]);
+[e ( _lcdString (1 *U + &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"174
+[; ;output.c: 174:         lcdInt(getAlarmLevel(1, 0));
+[e ( _lcdInt (1 ( _getAlarmLevel (2 , -> 1 `i -> 0 `i ]
+"176
+[; ;output.c: 176:         serialSend('\12');
+[e ( _serialSend (1 -> -> 10 `ui `uc ]
+"177
+[; ;output.c: 177:         serialString(msgsL1[numTela][idioma]);
+[e ( _serialString (1 *U + &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"178
+[; ;output.c: 178:         serialSend('\12');
+[e ( _serialSend (1 -> -> 10 `ui `uc ]
+"179
+[; ;output.c: 179:         serialString(msgsL2[numTela][idioma]);
+[e ( _serialString (1 *U + &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"180
+[; ;output.c: 180:         serialInt(getAlarmLevel(1, 0));
+[e ( _serialInt (1 ( _getAlarmLevel (2 , -> 1 `i -> 0 `i ]
+"182
+[; ;output.c: 182:     }
+}
+[e :U 18 ]
+"183
+[; ;output.c: 183:     if (numTela == STATE_ALARME_2_BAIXO) {
+[e $ ! == _numTela -> . `E21 7 `i 19  ]
+{
+"184
+[; ;output.c: 184:         lcdCommand(0x80);
+[e ( _lcdCommand (1 -> -> 128 `i `uc ]
+"185
+[; ;output.c: 185:         lcdString(msgsL1[numTela][idioma]);
+[e ( _lcdString (1 *U + &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"186
+[; ;output.c: 186:         lcdCommand(0xC0);
+[e ( _lcdCommand (1 -> -> 192 `i `uc ]
+"187
+[; ;output.c: 187:         lcdString(msgsL2[numTela][idioma]);
+[e ( _lcdString (1 *U + &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"188
+[; ;output.c: 188:         lcdInt(getAlarmLevel(1, 1));
+[e ( _lcdInt (1 ( _getAlarmLevel (2 , -> 1 `i -> 1 `i ]
+"190
+[; ;output.c: 190:         serialSend('\12');
+[e ( _serialSend (1 -> -> 10 `ui `uc ]
+"191
+[; ;output.c: 191:         serialString(msgsL1[numTela][idioma]);
+[e ( _serialString (1 *U + &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL1 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL1 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"192
+[; ;output.c: 192:         serialSend('\12');
+[e ( _serialSend (1 -> -> 10 `ui `uc ]
+"193
+[; ;output.c: 193:         serialString(msgsL2[numTela][idioma]);
+[e ( _serialString (1 *U + &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux * -> -> _idioma `ui `ux -> -> # *U &U *U + &U _msgsL2 * -> -> _numTela `ui `ux -> * -> # *U &U *U &U _msgsL2 `ui -> -> 2 `i `ui `ux `ui `ux ]
+"194
+[; ;output.c: 194:         serialInt(getAlarmLevel(1, 1));
+[e ( _serialInt (1 ( _getAlarmLevel (2 , -> 1 `i -> 1 `i ]
+"195
+[; ;output.c: 195:     }
+}
+[e :U 19 ]
+"198
+[; ;output.c: 198: }
+[e :UE 2 ]
+}
+[a 39C 65 76 69 82 84 65 58 32 76 105 109 105 116 101 32 66 65 73 88 79 32 65 116 105 110 103 105 100 111 0 ]
+[a 37C 65 76 69 82 84 65 58 32 76 105 109 105 116 101 32 65 76 84 79 32 65 116 105 110 103 105 100 111 0 ]
+[a 4C 67 104 97 110 103 101 32 108 97 110 103 117 97 103 101 0 ]
+[a 40C 87 65 82 78 73 78 71 58 32 76 79 87 32 84 104 114 101 115 104 111 108 100 32 82 101 97 99 104 101 100 0 ]
+[a 38C 87 65 82 78 73 78 71 58 32 72 73 71 72 32 84 104 114 101 115 104 111 108 100 32 82 101 97 99 104 101 100 0 ]
+[a 36C 32 32 33 76 0 ]
+[a 34C 32 32 33 72 0 ]
+[a 35C 32 32 33 66 0 ]
+[a 33C 32 32 33 65 0 ]
+[a 17C 83 69 78 83 79 82 32 50 58 0 ]
+[a 18C 83 69 78 83 79 82 32 50 58 0 ]
+[a 1C 83 69 78 83 79 82 32 49 58 0 ]
+[a 2C 83 69 78 83 79 82 32 49 58 0 ]
+[a 15C 65 108 97 114 109 101 32 50 32 98 97 105 120 111 32 0 ]
+[a 11C 65 108 97 114 109 101 32 49 32 98 97 105 120 111 32 0 ]
+[a 5C 65 108 116 101 114 97 114 32 97 108 97 114 109 101 32 0 ]
+[a 7C 65 108 116 101 114 97 114 32 97 108 97 114 109 101 32 0 ]
+[a 3C 65 108 116 101 114 97 114 32 105 100 105 111 109 97 32 0 ]
+[a 25C 86 97 108 111 114 32 58 32 0 ]
+[a 27C 86 97 108 111 114 32 58 32 0 ]
+[a 29C 86 97 108 111 114 32 58 32 0 ]
+[a 31C 86 97 108 111 114 32 58 32 0 ]
+[a 26C 86 97 108 117 101 32 58 32 0 ]
+[a 28C 86 97 108 117 101 32 58 32 0 ]
+[a 30C 86 97 108 117 101 32 58 32 0 ]
+[a 32C 86 97 108 117 101 32 58 32 0 ]
+[a 13C 65 108 97 114 109 101 32 50 32 97 108 116 111 32 32 0 ]
+[a 9C 65 108 97 114 109 101 32 49 32 97 108 116 111 32 32 0 ]
+[a 6C 67 104 97 110 103 101 32 97 108 97 114 109 32 32 32 32 0 ]
+[a 8C 67 104 97 110 103 101 32 97 108 97 114 109 32 32 32 32 0 ]
+[a 14C 65 108 97 114 109 32 50 32 72 105 103 104 32 32 32 32 0 ]
+[a 10C 65 108 97 114 109 32 49 32 72 105 103 104 32 32 32 32 0 ]
+[a 16C 65 108 97 114 109 32 50 32 76 111 119 32 32 32 32 32 0 ]
+[a 12C 65 108 97 114 109 32 49 32 76 111 119 32 32 32 32 32 0 ]
+[a 19C 80 111 114 116 117 103 117 101 115 32 32 32 32 32 32 0 ]
+[a 23C 83 101 110 115 111 114 32 50 32 32 32 32 32 32 32 0 ]
+[a 24C 83 101 110 115 111 114 32 50 32 32 32 32 32 32 32 0 ]
+[a 21C 83 101 110 115 111 114 32 49 32 32 32 32 32 32 32 0 ]
+[a 22C 83 101 110 115 111 114 32 49 32 32 32 32 32 32 32 0 ]
+[a 20C 69 110 103 108 105 115 104 32 32 32 32 32 32 32 32 0 ]
+[a 41C 32 32 32 32 0 ]
+[a 42C 32 32 32 32 0 ]

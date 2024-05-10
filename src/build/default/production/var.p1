@@ -1,0 +1,557 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"29 ./var.h
+[; ;./var.h: 29: int getAlarmLevel(int alarm, int level);
+[v _getAlarmLevel `(i ~T0 @X0 0 ef2`i`i ]
+"30
+[; ;./var.h: 30: void setAlarmLevel(int alarm, int level, int newAlarmLevel);
+[v _setAlarmLevel `(v ~T0 @X0 0 ef3`i`i`i ]
+"19 ./rtc.h
+[; ;./rtc.h: 19:  int dsReadData(int address);
+[v _dsReadData `(i ~T0 @X0 0 ef1`i ]
+"18
+[; ;./rtc.h: 18:  void dsWriteData(unsigned char value, int address);
+[v _dsWriteData `(v ~T0 @X0 0 ef2`uc`i ]
+"36 ./var.h
+[; ;./var.h: 36: int getSensorValue(int sensor);
+[v _getSensorValue `(i ~T0 @X0 0 ef1`i ]
+"144 var.c
+[; ;var.c: 144:         value = adcRead(7);
+[v _adcRead `(i ~T0 @X0 0 e? ]
+"6 var.c
+[; ;var.c: 6: static char state;
+[v _state `uc ~T0 @X0 1 s ]
+"7
+[; ;var.c: 7: static int timer;
+[v _timer `i ~T0 @X0 1 s ]
+"9
+[; ;var.c: 9: void varInit(void) {
+[v _varInit `(v ~T0 @X0 1 ef ]
+{
+[e :U _varInit ]
+[f ]
+"10
+[; ;var.c: 10:     state = 0;
+[e = _state -> -> 0 `i `uc ]
+"11
+[; ;var.c: 11:     timer = 0;
+[e = _timer -> 0 `i ]
+"12
+[; ;var.c: 12:     if(getAlarmLevel(0,0) > 100) setAlarmLevel(0,0, 100);
+[e $ ! > ( _getAlarmLevel (2 , -> 0 `i -> 0 `i -> 100 `i 2  ]
+[e ( _setAlarmLevel (3 , , -> 0 `i -> 0 `i -> 100 `i ]
+[e :U 2 ]
+"13
+[; ;var.c: 13:     if(getAlarmLevel(0,1) > 100) setAlarmLevel(0,1, 0);
+[e $ ! > ( _getAlarmLevel (2 , -> 0 `i -> 1 `i -> 100 `i 3  ]
+[e ( _setAlarmLevel (3 , , -> 0 `i -> 1 `i -> 0 `i ]
+[e :U 3 ]
+"14
+[; ;var.c: 14:     if(getAlarmLevel(1,0) > 100) setAlarmLevel(1,0, 100);
+[e $ ! > ( _getAlarmLevel (2 , -> 1 `i -> 0 `i -> 100 `i 4  ]
+[e ( _setAlarmLevel (3 , , -> 1 `i -> 0 `i -> 100 `i ]
+[e :U 4 ]
+"15
+[; ;var.c: 15:     if(getAlarmLevel(1,1) > 100) setAlarmLevel(1,1, 0);
+[e $ ! > ( _getAlarmLevel (2 , -> 1 `i -> 1 `i -> 100 `i 5  ]
+[e ( _setAlarmLevel (3 , , -> 1 `i -> 1 `i -> 0 `i ]
+[e :U 5 ]
+"16
+[; ;var.c: 16: }
+[e :UE 1 ]
+}
+"18
+[; ;var.c: 18: char getState(void) {
+[v _getState `(uc ~T0 @X0 1 ef ]
+{
+[e :U _getState ]
+[f ]
+"19
+[; ;var.c: 19:     return state;
+[e ) _state ]
+[e $UE 6  ]
+"20
+[; ;var.c: 20: }
+[e :UE 6 ]
+}
+"22
+[; ;var.c: 22: void setState(char newState) {
+[v _setState `(v ~T0 @X0 1 ef1`uc ]
+{
+[e :U _setState ]
+[v _newState `uc ~T0 @X0 1 r1 ]
+[f ]
+"23
+[; ;var.c: 23:     state = newState;
+[e = _state _newState ]
+"24
+[; ;var.c: 24: }
+[e :UE 7 ]
+}
+"26
+[; ;var.c: 26: int getTimer(void) {
+[v _getTimer `(i ~T0 @X0 1 ef ]
+{
+[e :U _getTimer ]
+[f ]
+"28
+[; ;var.c: 28:     return timer;
+[e ) _timer ]
+[e $UE 8  ]
+"29
+[; ;var.c: 29: }
+[e :UE 8 ]
+}
+"31
+[; ;var.c: 31: void setTimer(int val) {
+[v _setTimer `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _setTimer ]
+[v _val `i ~T0 @X0 1 r1 ]
+[f ]
+"32
+[; ;var.c: 32:     timer = val;
+[e = _timer _val ]
+"33
+[; ;var.c: 33: }
+[e :UE 9 ]
+}
+"35
+[; ;var.c: 35: int getAlarmLevel(int alarm, int level) {
+[v _getAlarmLevel `(i ~T0 @X0 1 ef2`i`i ]
+{
+[e :U _getAlarmLevel ]
+[v _alarm `i ~T0 @X0 1 r1 ]
+[v _level `i ~T0 @X0 1 r2 ]
+[f ]
+"36
+[; ;var.c: 36:     if (alarm == 0) {
+[e $ ! == _alarm -> 0 `i 11  ]
+{
+"37
+[; ;var.c: 37:         switch (level) {
+[e $U 13  ]
+{
+"38
+[; ;var.c: 38:             case 0:
+[e :U 14 ]
+"39
+[; ;var.c: 39:                 return dsReadData(0x21);
+[e ) ( _dsReadData (1 -> 33 `i ]
+[e $UE 10  ]
+"40
+[; ;var.c: 40:                 break;
+[e $U 12  ]
+"41
+[; ;var.c: 41:             case 1:
+[e :U 15 ]
+"42
+[; ;var.c: 42:                 return dsReadData(0x20);
+[e ) ( _dsReadData (1 -> 32 `i ]
+[e $UE 10  ]
+"43
+[; ;var.c: 43:                 break;
+[e $U 12  ]
+"44
+[; ;var.c: 44:             default:
+[e :U 16 ]
+"45
+[; ;var.c: 45:                 return 0;
+[e ) -> 0 `i ]
+[e $UE 10  ]
+"46
+[; ;var.c: 46:                 break;
+[e $U 12  ]
+"47
+[; ;var.c: 47:         }
+}
+[e $U 12  ]
+[e :U 13 ]
+[e [\ _level , $ -> 0 `i 14
+ , $ -> 1 `i 15
+ 16 ]
+[e :U 12 ]
+"48
+[; ;var.c: 48:     } else if (alarm == 1) {
+}
+[e $U 17  ]
+[e :U 11 ]
+[e $ ! == _alarm -> 1 `i 18  ]
+{
+"49
+[; ;var.c: 49:         switch (level) {
+[e $U 20  ]
+{
+"50
+[; ;var.c: 50:             case 0:
+[e :U 21 ]
+"51
+[; ;var.c: 51:                 return dsReadData(0x23);
+[e ) ( _dsReadData (1 -> 35 `i ]
+[e $UE 10  ]
+"52
+[; ;var.c: 52:                 break;
+[e $U 19  ]
+"53
+[; ;var.c: 53:             case 1:
+[e :U 22 ]
+"54
+[; ;var.c: 54:                 return dsReadData(0x22);
+[e ) ( _dsReadData (1 -> 34 `i ]
+[e $UE 10  ]
+"55
+[; ;var.c: 55:                 break;
+[e $U 19  ]
+"56
+[; ;var.c: 56:             default:
+[e :U 23 ]
+"57
+[; ;var.c: 57:                 return 0;
+[e ) -> 0 `i ]
+[e $UE 10  ]
+"58
+[; ;var.c: 58:                 break;
+[e $U 19  ]
+"59
+[; ;var.c: 59:         }
+}
+[e $U 19  ]
+[e :U 20 ]
+[e [\ _level , $ -> 0 `i 21
+ , $ -> 1 `i 22
+ 23 ]
+[e :U 19 ]
+"61
+[; ;var.c: 61:     }
+}
+[e :U 18 ]
+[e :U 17 ]
+"62
+[; ;var.c: 62: }
+[e :UE 10 ]
+}
+"69
+[; ;var.c: 69: void setAlarmLevel(int alarm, int level, int newAlarmLevel) {
+[v _setAlarmLevel `(v ~T0 @X0 1 ef3`i`i`i ]
+{
+[e :U _setAlarmLevel ]
+[v _alarm `i ~T0 @X0 1 r1 ]
+[v _level `i ~T0 @X0 1 r2 ]
+[v _newAlarmLevel `i ~T0 @X0 1 r3 ]
+[f ]
+"70
+[; ;var.c: 70:     switch (alarm) {
+[e $U 26  ]
+{
+"71
+[; ;var.c: 71:         case 0:
+[e :U 27 ]
+"72
+[; ;var.c: 72:             switch (level) {
+[e $U 29  ]
+{
+"73
+[; ;var.c: 73:                 case 0:
+[e :U 30 ]
+"74
+[; ;var.c: 74:                     if (newAlarmLevel > dsReadData(0x20)) {
+[e $ ! > _newAlarmLevel ( _dsReadData (1 -> 32 `i 31  ]
+{
+"75
+[; ;var.c: 75:                         dsWriteData(newAlarmLevel > 100 ? 100 : newAlarmLevel, 0x21);
+[e ( _dsWriteData (2 , -> ? > _newAlarmLevel -> 100 `i : -> 100 `i _newAlarmLevel `uc -> 33 `i ]
+"76
+[; ;var.c: 76:                     } else {
+}
+[e $U 32  ]
+[e :U 31 ]
+{
+"77
+[; ;var.c: 77:                         dsWriteData(dsReadData(0x20) + 1, 0x21);
+[e ( _dsWriteData (2 , -> + ( _dsReadData (1 -> 32 `i -> 1 `i `uc -> 33 `i ]
+"78
+[; ;var.c: 78:                     }
+}
+[e :U 32 ]
+"79
+[; ;var.c: 79:                     break;
+[e $U 28  ]
+"80
+[; ;var.c: 80:                 case 1:
+[e :U 33 ]
+"81
+[; ;var.c: 81:                     if (newAlarmLevel < dsReadData(0x21)) {
+[e $ ! < _newAlarmLevel ( _dsReadData (1 -> 33 `i 34  ]
+{
+"82
+[; ;var.c: 82:                         dsWriteData(newAlarmLevel > 99 ? 99 : newAlarmLevel, 0x20);
+[e ( _dsWriteData (2 , -> ? > _newAlarmLevel -> 99 `i : -> 99 `i _newAlarmLevel `uc -> 32 `i ]
+"83
+[; ;var.c: 83:                     } else {
+}
+[e $U 35  ]
+[e :U 34 ]
+{
+"84
+[; ;var.c: 84:                         dsWriteData(dsReadData(0x21) - 1, 0x20);
+[e ( _dsWriteData (2 , -> - ( _dsReadData (1 -> 33 `i -> 1 `i `uc -> 32 `i ]
+"85
+[; ;var.c: 85:                     }
+}
+[e :U 35 ]
+"86
+[; ;var.c: 86:                     break;
+[e $U 28  ]
+"87
+[; ;var.c: 87:                 default:
+[e :U 36 ]
+"88
+[; ;var.c: 88:                     break;
+[e $U 28  ]
+"89
+[; ;var.c: 89:             }
+}
+[e $U 28  ]
+[e :U 29 ]
+[e [\ _level , $ -> 0 `i 30
+ , $ -> 1 `i 33
+ 36 ]
+[e :U 28 ]
+"90
+[; ;var.c: 90:             break;
+[e $U 25  ]
+"91
+[; ;var.c: 91:         case 1:
+[e :U 37 ]
+"92
+[; ;var.c: 92:             switch (level) {
+[e $U 39  ]
+{
+"93
+[; ;var.c: 93:                 case 0:
+[e :U 40 ]
+"94
+[; ;var.c: 94:                     if (newAlarmLevel > dsReadData(0x22)) {
+[e $ ! > _newAlarmLevel ( _dsReadData (1 -> 34 `i 41  ]
+{
+"95
+[; ;var.c: 95:                         dsWriteData(newAlarmLevel > 100 ? 100 : newAlarmLevel, 0x23);
+[e ( _dsWriteData (2 , -> ? > _newAlarmLevel -> 100 `i : -> 100 `i _newAlarmLevel `uc -> 35 `i ]
+"96
+[; ;var.c: 96:                     } else {
+}
+[e $U 42  ]
+[e :U 41 ]
+{
+"97
+[; ;var.c: 97:                         dsWriteData(dsReadData(0x22) + 1, 0x23);
+[e ( _dsWriteData (2 , -> + ( _dsReadData (1 -> 34 `i -> 1 `i `uc -> 35 `i ]
+"98
+[; ;var.c: 98:                     }
+}
+[e :U 42 ]
+"99
+[; ;var.c: 99:                     break;
+[e $U 38  ]
+"100
+[; ;var.c: 100:                 case 1:
+[e :U 43 ]
+"101
+[; ;var.c: 101:                     if (newAlarmLevel < dsReadData(0x23)) {
+[e $ ! < _newAlarmLevel ( _dsReadData (1 -> 35 `i 44  ]
+{
+"102
+[; ;var.c: 102:                         dsWriteData(newAlarmLevel > 99 ? 99 : newAlarmLevel, 0x22);
+[e ( _dsWriteData (2 , -> ? > _newAlarmLevel -> 99 `i : -> 99 `i _newAlarmLevel `uc -> 34 `i ]
+"103
+[; ;var.c: 103:                     } else {
+}
+[e $U 45  ]
+[e :U 44 ]
+{
+"104
+[; ;var.c: 104:                         dsWriteData(dsReadData(0x23) - 1, 0x22);
+[e ( _dsWriteData (2 , -> - ( _dsReadData (1 -> 35 `i -> 1 `i `uc -> 34 `i ]
+"105
+[; ;var.c: 105:                     }
+}
+[e :U 45 ]
+"106
+[; ;var.c: 106:                     break;
+[e $U 38  ]
+"107
+[; ;var.c: 107:                 default:
+[e :U 46 ]
+"108
+[; ;var.c: 108:                     break;
+[e $U 38  ]
+"109
+[; ;var.c: 109:             }
+}
+[e $U 38  ]
+[e :U 39 ]
+[e [\ _level , $ -> 0 `i 40
+ , $ -> 1 `i 43
+ 46 ]
+[e :U 38 ]
+"110
+[; ;var.c: 110:             break;
+[e $U 25  ]
+"111
+[; ;var.c: 111:         default:
+[e :U 47 ]
+"112
+[; ;var.c: 112:             break;
+[e $U 25  ]
+"113
+[; ;var.c: 113:     }
+}
+[e $U 25  ]
+[e :U 26 ]
+[e [\ _alarm , $ -> 0 `i 27
+ , $ -> 1 `i 37
+ 47 ]
+[e :U 25 ]
+"114
+[; ;var.c: 114: }
+[e :UE 24 ]
+}
+"116
+[; ;var.c: 116: int checkAlarm(int alarm, int level) {
+[v _checkAlarm `(i ~T0 @X0 1 ef2`i`i ]
+{
+[e :U _checkAlarm ]
+[v _alarm `i ~T0 @X0 1 r1 ]
+[v _level `i ~T0 @X0 1 r2 ]
+[f ]
+"117
+[; ;var.c: 117:     if (level == 0) {
+[e $ ! == _level -> 0 `i 49  ]
+{
+"118
+[; ;var.c: 118:         if (getAlarmLevel(alarm, level) <= getSensorValue(alarm)) {
+[e $ ! <= ( _getAlarmLevel (2 , _alarm _level ( _getSensorValue (1 _alarm 50  ]
+{
+"119
+[; ;var.c: 119:             return 1;
+[e ) -> 1 `i ]
+[e $UE 48  ]
+"120
+[; ;var.c: 120:         }else{
+}
+[e $U 51  ]
+[e :U 50 ]
+{
+"121
+[; ;var.c: 121:             return 0;
+[e ) -> 0 `i ]
+[e $UE 48  ]
+"122
+[; ;var.c: 122:         }
+}
+[e :U 51 ]
+"123
+[; ;var.c: 123:     } else if(level == 1) {
+}
+[e $U 52  ]
+[e :U 49 ]
+[e $ ! == _level -> 1 `i 53  ]
+{
+"124
+[; ;var.c: 124:         if (getAlarmLevel(alarm, level) >= getSensorValue(alarm)) {
+[e $ ! >= ( _getAlarmLevel (2 , _alarm _level ( _getSensorValue (1 _alarm 54  ]
+{
+"125
+[; ;var.c: 125:             return 1;
+[e ) -> 1 `i ]
+[e $UE 48  ]
+"126
+[; ;var.c: 126:         }else{
+}
+[e $U 55  ]
+[e :U 54 ]
+{
+"127
+[; ;var.c: 127:             return 0;
+[e ) -> 0 `i ]
+[e $UE 48  ]
+"128
+[; ;var.c: 128:         }
+}
+[e :U 55 ]
+"129
+[; ;var.c: 129:     }
+}
+[e :U 53 ]
+[e :U 52 ]
+"130
+[; ;var.c: 130: }
+[e :UE 48 ]
+}
+"132
+[; ;var.c: 132: int getLanguage(void) {
+[v _getLanguage `(i ~T0 @X0 1 ef ]
+{
+[e :U _getLanguage ]
+[f ]
+"133
+[; ;var.c: 133:     return dsReadData(0x30) % 2;
+[e ) % ( _dsReadData (1 -> 48 `i -> 2 `i ]
+[e $UE 56  ]
+"134
+[; ;var.c: 134: }
+[e :UE 56 ]
+}
+"136
+[; ;var.c: 136: void setLanguage(int newLanguage) {
+[v _setLanguage `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _setLanguage ]
+[v _newLanguage `i ~T0 @X0 1 r1 ]
+[f ]
+"137
+[; ;var.c: 137:     dsWriteData(newLanguage % 2, 0x30);
+[e ( _dsWriteData (2 , -> % _newLanguage -> 2 `i `uc -> 48 `i ]
+"138
+[; ;var.c: 138: }
+[e :UE 57 ]
+}
+"140
+[; ;var.c: 140: int getSensorValue(int sensor) {
+[v _getSensorValue `(i ~T0 @X0 1 ef1`i ]
+{
+[e :U _getSensorValue ]
+[v _sensor `i ~T0 @X0 1 r1 ]
+[f ]
+"141
+[; ;var.c: 141:     int value;
+[v _value `i ~T0 @X0 1 a ]
+"143
+[; ;var.c: 143:     if (sensor == 0) {
+[e $ ! == _sensor -> 0 `i 59  ]
+{
+"144
+[; ;var.c: 144:         value = adcRead(7);
+[e = _value ( _adcRead -> 7 `i ]
+"145
+[; ;var.c: 145:     }
+}
+[e :U 59 ]
+"146
+[; ;var.c: 146:     if (sensor == 1) {
+[e $ ! == _sensor -> 1 `i 60  ]
+{
+"147
+[; ;var.c: 147:         value = adcRead(11);
+[e = _value ( _adcRead -> 11 `i ]
+"148
+[; ;var.c: 148:     }
+}
+[e :U 60 ]
+"150
+[; ;var.c: 150:     return value;
+[e ) _value ]
+[e $UE 58  ]
+"151
+[; ;var.c: 151: }
+[e :UE 58 ]
+}
